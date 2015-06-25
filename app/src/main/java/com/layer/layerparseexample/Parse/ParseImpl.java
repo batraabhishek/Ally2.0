@@ -32,8 +32,8 @@ public class ParseImpl {
     // 2. Mouse over the settings option in your project (gear icon)
     // 3. Select "Keys"
     // 4. Copy the "Application ID" and "Client Key" into the following fields:
-    private static String ParseAppID = "PARSE_APP_ID";
-    private static String ParseClientKey = "PARSE_CLIENT_KEY";
+    private static String ParseAppID = "0MMopA5bR1toNEFLW02ut9R5RXadxwY5ptWM90Yd";
+    private static String ParseClientKey = "krZ5xTqVDUfG5kVMypR5N2O8PGZwyWpf6HbQ9Bqj";
 
 
     //Merely checks to see if you have updated the App ID and Client Key. If these are set up

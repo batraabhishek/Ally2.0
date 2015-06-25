@@ -55,6 +55,8 @@ public class MyAuthenticationListener implements LayerAuthenticationListener {
         params.put("nonce", nonce);
 
         ParseCloud.callFunctionInBackground("generateToken", params, new FunctionCallback<String>() {
+
+
             public void done(String token, ParseException e) {
                 if (e == null) {
                     //Once you have a Valid Identity Token, return it to the Layer SDK which will

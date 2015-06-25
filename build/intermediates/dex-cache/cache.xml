@@ -2,151 +2,95 @@
 <items version="2" >
 
     <item
-        jar="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-e3599155c0ab705ddc570bf866eb39e20aa9c78d.jar" />
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-ae84d7d3b2264ccc207fdf43b076370e6dc13e49.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/libs/Parse-1.8.3.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
-        <dex dex="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-4e1c0d4b3ee695bd7b973cebf3207b138d080095.jar" />
+        sha1="56dfc827c23c1f0be64eff2ef556633ea95b16ad">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/Parse-1.8.3-1d2a69e58f1951f340553a18f425fa5ab3d81a4c.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/classes-0bccbf7ac630e8774403ea1f0fe9febc15aac909.jar" />
+        sha1="983e2f375504bc04def18e709c35192afe92e65f">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-237b5cb5e3981d4e3b9f6f0ea737a025d15ab068.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c6d79137693d494dee16372d3921f919eb724ced">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/classes-ba9b94d474c06bd9666aa22a146f08c69f69705f.jar" />
-    </item>
-    <item
-        jar="/Users/neilmehta/.gradle/caches/modules-2/files-2.1/log4j/log4j/1.2.17/5af35056b4d257e4b64b9e8069c0746e8b08629f/log4j-1.2.17.jar"
+        jar="/Users/abhishek/.gradle/caches/modules-2/files-2.1/log4j/log4j/1.2.17/5af35056b4d257e4b64b9e8069c0746e8b08629f/log4j-1.2.17.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="5af35056b4d257e4b64b9e8069c0746e8b08629f">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/log4j-1.2.17-31054200b217c7bef76a598ad4bbe930e155a845.jar" />
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/log4j-1.2.17-12736f8a22f2995e88f4a41bbb48ab8833041eeb.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/classes-b9b475619ddc6dd9b1479e9b678851c2b8e7ff11.jar" />
-    </item>
-    <item
-        jar="/Users/neilmehta/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-log4j12/1.7.6/6953717b9850aeb26d1b8375ca07dbd9c50eca4e/slf4j-log4j12-1.7.6.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="6953717b9850aeb26d1b8375ca07dbd9c50eca4e">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/slf4j-log4j12-1.7.6-25e6433dcb46480149e7bec18611662b4e17d3fc.jar" />
-    </item>
-    <item
-        jar="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c6d79137693d494dee16372d3921f919eb724ced">
-        <dex dex="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-3a4cb8bbd71eecb76efb5d5ae69de8550c2b6e7b.jar" />
-    </item>
-    <item
-        jar="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/exploded-aar/com.layer.sdk/layer-sdk/0.11.6/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="23fec00692ec522ea24d572095a5c8775ab46f4a">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/classes-23d471989d1876b79c849df7520bf740742fd308.jar" />
-    </item>
-    <item
-        jar="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
-        <dex dex="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-daf4938a329ec2eb6e7a638fb22a8a8a5cdcb042.jar" />
-    </item>
-    <item
-        jar="/Users/neilmehta/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jar="/Users/abhishek/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-fd900c822be9a019a71a65a4b1f219892e823b19.jar" />
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-6b67f25b6c8b67d847a148c94c295abefdf2a7fb.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-f42618833bf7b3818d68d0895febaf4b208e6218.jar" />
+        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-d8092419f93cb7edf64a6fa4148932b7f4190c59.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/libs/Parse-1.8.3.jar"
+        jar="/Users/abhishek/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="56dfc827c23c1f0be64eff2ef556633ea95b16ad">
-        <dex dex="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/Parse-1.8.3-98d37e4aa7b063dcc8740e68257464d45fd1df05.jar" />
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-f38f11eb73fc1b9abeb6098624c7beda461c2377.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-b8398a9b89a9fbb36c95db36a6af1a6d87dc8ae2.jar" />
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-4c395ef09e1854c9f7963e5cefd8cd931726e7c4.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/classes-b36b237d29aa9b658452c2a06b0311cffc228b73.jar" />
-    </item>
-    <item
-        jar="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-bedb712791573a30fb6464af18bdd94a177f68c1.jar" />
-    </item>
-    <item
-        jar="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.layer.sdk/layer-sdk/0.13.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="828c5a448247f9d60db286b7c15cca60700273e3">
-        <dex dex="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-129d50c2fd9be96c82ee15cb80f5e939b38ddbee.jar" />
-    </item>
-    <item
-        jar="/Users/neilmehta/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.7/2b8019b6249bb05d81d3a3094e468753e2b21311/slf4j-api-1.7.7.jar"
+        jar="/Users/abhishek/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.7/2b8019b6249bb05d81d3a3094e468753e2b21311/slf4j-api-1.7.7.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2b8019b6249bb05d81d3a3094e468753e2b21311">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/slf4j-api-1.7.7-ae1381b1c97f46d5f2bf82aab9d36424fd752b6b.jar" />
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/slf4j-api-1.7.7-1474ed844d115d6b995afebfa7023f9db3cb69c2.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.layer.sdk/layer-sdk/0.13.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/classes-babef1fd6b9e22ebf8ce50f9996ddbf77860be94.jar" />
+        sha1="828c5a448247f9d60db286b7c15cca60700273e3">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-e8d4fe15e123b72fd341916bbe2fe63140880dfc.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/Users/neilmehta/Documents/Github/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-919ad6ee35c3ff012de3e54f5964e62e0cbe5967.jar" />
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-88be07f9dffe41d3f90ad6f75d2761b65af50a0c.jar" />
     </item>
     <item
-        jar="/Users/neilmehta/Documents/Github/LayerParseExample/app/libs/Parse-1.8.3.jar"
+        jar="/Users/abhishek/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-log4j12/1.7.6/6953717b9850aeb26d1b8375ca07dbd9c50eca4e/slf4j-log4j12-1.7.6.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="56dfc827c23c1f0be64eff2ef556633ea95b16ad">
-        <dex dex="/Users/neilmehta/Documents/Github/LayerParseExample/app/build/intermediates/pre-dexed/debug/Parse-1.8.3-672fde80711bd9d1c71d3388dd9012c57862c567.jar" />
+        sha1="6953717b9850aeb26d1b8375ca07dbd9c50eca4e">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/slf4j-log4j12-1.7.6-29605f40989223691ccc9e474ac34f79f50472ce.jar" />
+    </item>
+    <item
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-e7722e59ad4ab0ce3696dc2442c7154e1ac5ae1a.jar" />
     </item>
 
 </items>

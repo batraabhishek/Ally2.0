@@ -32,7 +32,7 @@ public class LayerImpl {
     // 2. Open the Dashboard, and select your app from the dropdown on the top left
     // 3. Click "Info" in the left panel
     // 4. Copy your Staging App ID and paste it here:
-    private static String LayerAppID = "LAYER_APP_ID";
+    private static String LayerAppID = "aedf960a-165b-11e5-8593-27936d001b74";
 
 
     //The LayerClient object. There should only be one instance of this object in your app.

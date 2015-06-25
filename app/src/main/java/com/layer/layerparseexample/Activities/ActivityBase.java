@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -27,7 +28,7 @@ import com.layer.sdk.exceptions.LayerException;
  *  been resized due to opening or closing the keyboard.
  */
 
-public class ActivityBase extends ActionBarActivity implements LayerCallbacks, View.OnClickListener{
+public class ActivityBase extends AppCompatActivity implements LayerCallbacks, View.OnClickListener{
 
     //Makes sure the Layer Client is created, registers callback handlers, and connects
     protected void onCreate(Bundle savedInstanceState) {
