@@ -44,44 +44,6 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
     //Handle the callbacks when the Message item is actually clicked. In this case, the
     // MessageActivity class implements the MessageClickHandler
     private final MessageClickHandler mMessageClickHandler;
-    public static interface MessageClickHandler {
-        public void onMessageClick(Message message);
-
-        public boolean onMessageLongClick(Message message);
-    }
-
-
-    //For each Message item in the RecyclerView list, we show the sender, time, and contents of the
-    // message. We also grab some layout items to help with right/left aligning the message
-    public static class ViewHolder
-            extends RecyclerView.ViewHolder
-            implements View.OnClickListener, View.OnLongClickListener {
-
-        public TextView sender;
-        public TextView time;
-        public TextView content;
-        public Message message;
-        public LinearLayout contentLayout;
-        public final MessageClickHandler messageClickHandler;
-
-        //Registers the click listener callback handler
-        public ViewHolder(View itemView, MessageClickHandler messageClickHandler) {
-            super(itemView);
-            this.messageClickHandler = messageClickHandler;
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
-        }
-
-        //Execute the callback when the message is clicked
-        public void onClick(View v) {
-            messageClickHandler.onMessageClick(message);
-        }
-
-        //Execute the callback when the conversation is long-clicked
-        public boolean onLongClick(View v) {
-            return messageClickHandler.onMessageLongClick(message);
-        }
-    }
 
     //Constructor for the MessasgeQueryAdapter
     //Sorts all messages belonging to this conversation by its position. This will guarantee all
@@ -123,7 +85,7 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
         }
 
         String senderId = "";
-        if(message != null)
+        if (message != null)
             senderId = message.getSender().getUserId();
 
         //Set the content of the message, sender, and received time
@@ -136,7 +98,7 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
         // the message box
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.weight = 1.0f;
-        if(message != null && !senderId.equals(LayerImpl.getLayerClient().getAuthenticatedUserId())) {
+        if (message != null && !senderId.equals(LayerImpl.getLayerClient().getAuthenticatedUserId())) {
             params.gravity = Gravity.LEFT;
             viewHolder.contentLayout.setBackgroundColor(Color.YELLOW);
         } else {
@@ -151,5 +113,43 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
     // (such as images, location, audio, etc) if you wanted
     public int getItemViewType(int i) {
         return 1;
+    }
+
+    public static interface MessageClickHandler {
+        public void onMessageClick(Message message);
+
+        public boolean onMessageLongClick(Message message);
+    }
+
+    //For each Message item in the RecyclerView list, we show the sender, time, and contents of the
+    // message. We also grab some layout items to help with right/left aligning the message
+    public static class ViewHolder
+            extends RecyclerView.ViewHolder
+            implements View.OnClickListener, View.OnLongClickListener {
+
+        public final MessageClickHandler messageClickHandler;
+        public TextView sender;
+        public TextView time;
+        public TextView content;
+        public Message message;
+        public LinearLayout contentLayout;
+
+        //Registers the click listener callback handler
+        public ViewHolder(View itemView, MessageClickHandler messageClickHandler) {
+            super(itemView);
+            this.messageClickHandler = messageClickHandler;
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        //Execute the callback when the message is clicked
+        public void onClick(View v) {
+            messageClickHandler.onMessageClick(message);
+        }
+
+        //Execute the callback when the conversation is long-clicked
+        public boolean onLongClick(View v) {
+            return messageClickHandler.onMessageLongClick(message);
+        }
     }
 }

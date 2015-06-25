@@ -41,44 +41,6 @@ public class ConversationQueryAdapter extends QueryAdapter<Conversation, Convers
     //Handle the callbacks when the Conversation item is actually clicked. In this case, the
     // ConversationsActivity class implements the ConversationClickHandler
     private final ConversationClickHandler mConversationClickHandler;
-    public static interface ConversationClickHandler {
-        public void onConversationClick(Conversation conversation);
-
-        public boolean onConversationLongClick(Conversation conversation);
-    }
-
-    //The fields in the ViewHolder reflect the conversation_item view
-    public static class ViewHolder
-            extends RecyclerView.ViewHolder
-            implements View.OnClickListener, View.OnLongClickListener {
-
-        //For each Conversation item in the RecyclerView list, we show the participants, time,
-        // contents of the last message, and have a reference to the conversation so when it is
-        // clicked we can start the MessageActivity
-        public TextView participants;
-        public TextView time;
-        public TextView lastMsgContent;
-        public Conversation conversation;
-        public final ConversationClickHandler conversationClickHandler;
-
-        //Registers the click listener callback handler
-        public ViewHolder(View itemView, ConversationClickHandler conversationClickHandler) {
-            super(itemView);
-            this.conversationClickHandler = conversationClickHandler;
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
-        }
-
-        //Execute the callback when the conversation is clicked
-        public void onClick(View v) {
-            conversationClickHandler.onConversationClick(conversation);
-        }
-
-        //Execute the callback when the conversation is long-clicked
-        public boolean onLongClick(View v) {
-            return conversationClickHandler.onConversationLongClick(conversation);
-        }
-    }
 
     //Constructor for the ConversationQueryAdapter
     //Sorts all conversations by last message received (ie, downloaded to the device)
@@ -125,10 +87,10 @@ public class ConversationQueryAdapter extends QueryAdapter<Conversation, Convers
         // handles from Parse
         String participants = "";
         List<String> users = conversation.getParticipants();
-        for(int i = 0; i < users.size(); i++){
-            if(!users.get(i).equals(ParseUser.getCurrentUser().getObjectId())){
+        for (int i = 0; i < users.size(); i++) {
+            if (!users.get(i).equals(ParseUser.getCurrentUser().getObjectId())) {
                 //Format the String so there is a comma after every username
-                if(participants.length() > 0)
+                if (participants.length() > 0)
                     participants += ", ";
 
                 //Add the human readable username to the String
@@ -153,5 +115,44 @@ public class ConversationQueryAdapter extends QueryAdapter<Conversation, Convers
     // Conversations if you were so inclined
     public int getItemViewType(int i) {
         return 1;
+    }
+
+    public static interface ConversationClickHandler {
+        public void onConversationClick(Conversation conversation);
+
+        public boolean onConversationLongClick(Conversation conversation);
+    }
+
+    //The fields in the ViewHolder reflect the conversation_item view
+    public static class ViewHolder
+            extends RecyclerView.ViewHolder
+            implements View.OnClickListener, View.OnLongClickListener {
+
+        public final ConversationClickHandler conversationClickHandler;
+        //For each Conversation item in the RecyclerView list, we show the participants, time,
+        // contents of the last message, and have a reference to the conversation so when it is
+        // clicked we can start the MessageActivity
+        public TextView participants;
+        public TextView time;
+        public TextView lastMsgContent;
+        public Conversation conversation;
+
+        //Registers the click listener callback handler
+        public ViewHolder(View itemView, ConversationClickHandler conversationClickHandler) {
+            super(itemView);
+            this.conversationClickHandler = conversationClickHandler;
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        //Execute the callback when the conversation is clicked
+        public void onClick(View v) {
+            conversationClickHandler.onConversationClick(conversation);
+        }
+
+        //Execute the callback when the conversation is long-clicked
+        public boolean onLongClick(View v) {
+            return conversationClickHandler.onConversationLongClick(conversation);
+        }
     }
 }

@@ -5,12 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.layer.layerparseexample.Layer.LayerImpl;
 import com.layer.layerparseexample.Parse.ParseImpl;
@@ -27,7 +27,7 @@ import com.parse.ParseUser;
  *  SignupActivity class
  */
 
-public class LoginActivity extends ActivityBase implements ParseLoginCallbacks{
+public class LoginActivity extends ActivityBase implements ParseLoginCallbacks {
 
     //User inputs for username and password
     private EditText mUsername, mPassword;
@@ -36,29 +36,30 @@ public class LoginActivity extends ActivityBase implements ParseLoginCallbacks{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
         //Register the login, signup, and forgot password buttons
-        Button loginButton = (Button)findViewById(R.id.login);
-        if(loginButton != null)
+        Button loginButton = (Button) findViewById(R.id.login);
+        if (loginButton != null)
             loginButton.setOnClickListener(this);
 
-        Button signUpButton = (Button)findViewById(R.id.signup);
-        if(signUpButton != null)
+        Button signUpButton = (Button) findViewById(R.id.signup);
+        if (signUpButton != null)
             signUpButton.setOnClickListener(this);
 
-        TextView forgotPasswordButton = (TextView)findViewById(R.id.forgotpassword);
-        if(forgotPasswordButton != null)
+        Button forgotPasswordButton = (Button) findViewById(R.id.forgotpassword);
+        if (forgotPasswordButton != null)
             forgotPasswordButton.setOnClickListener(this);
 
         //Grab the username and password fields
-        mUsername = (EditText)findViewById(R.id.username);
-        mPassword = (EditText)findViewById(R.id.password);
+        mUsername = (EditText) findViewById(R.id.username);
+        mPassword = (EditText) findViewById(R.id.password);
     }
 
     //Check to see what the user has tapped and react accordingly
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
 
             case R.id.login:
                 Log.d("Activity", "Login button pressed");
@@ -70,29 +71,24 @@ public class LoginActivity extends ActivityBase implements ParseLoginCallbacks{
                 onForgotPasswordPressed();
                 break;
 
-            case R.id.signup:
-                Log.d("Activity", "Sign Up button pressed");
-                onSignupPressed();
-                break;
-
             default:
         }
     }
 
     //Handle logging in an existing user
-    public void onLoginPressed(){
+    public void onLoginPressed() {
 
         //What did the user enter as their username as password?
         String usernameString = getTextAsString(mUsername);
         String passwordString = getTextAsString(mPassword);
 
         //Make sure the entries are valid
-        if(usernameString.length() <= 3){
+        if (usernameString.length() <= 3) {
 
-            Log.d("Activity","Cannot login, username is too short");
+            Log.d("Activity", "Cannot login, username is too short");
             showAlert("Login Error", "A valid username is required to login.");
 
-        } else if(passwordString.length() <= 3){
+        } else if (passwordString.length() <= 3) {
 
             Log.d("Activity", "Cannot login, password is too short");
             showAlert("Login Error", "A valid password is required to login.");
@@ -111,7 +107,7 @@ public class LoginActivity extends ActivityBase implements ParseLoginCallbacks{
         Log.d("Activity", "User logged in with Parse. Staring Layer authentication");
 
         //Check to see if the user is already authenticated. If so, start the ConversationsActivity
-        if (LayerImpl.isAuthenticated()){
+        if (LayerImpl.isAuthenticated()) {
             onUserAuthenticated(ParseImpl.getRegisteredUser().getObjectId());
         } else {
             //User is logged into Parse, so start the Layer Authentication process
@@ -124,13 +120,13 @@ public class LoginActivity extends ActivityBase implements ParseLoginCallbacks{
         Log.d("Activity", "Cannot log in with Parse. Exception: " + e.toString());
 
         showAlert("Login Error", "Encountered the following error while logging in: " + e.toString()
-            + "\n\n" + "Make sure you have signed up, or click \"Forgot Password?\"");
+                + "\n\n" + "Make sure you have signed up, or click \"Forgot Password?\"");
     }
 
 
     //User was Authenticated with Layer. This means their lastMsgContent/conversation history is being
     // downloaded and stored locally, and they can now send/receive messages
-    public void onUserAuthenticated(String userID){
+    public void onUserAuthenticated(String userID) {
 
         //Go to the conversation view
         Log.d("Activity", "User authenticated");
@@ -140,16 +136,16 @@ public class LoginActivity extends ActivityBase implements ParseLoginCallbacks{
     }
 
     //Layer was not able to Authenticate the user for some reason
-    public void onUserAuthenticatedError(LayerException e){
+    public void onUserAuthenticatedError(LayerException e) {
         showAlert("Login Error", "Encountered the following error while logging in: " + e.toString()
-            + "\n\n" + "Make sure you have signed up, or click \"Forgot Password?\"");
+                + "\n\n" + "Make sure you have signed up, or click \"Forgot Password?\"");
 
         Log.d("Activity", "Cannot authenticate Layer. Exception: " + e.toString());
     }
 
 
     //Handle resetting a user's password
-    public void onForgotPasswordPressed(){
+    public void onForgotPasswordPressed() {
 
         //Build an alert dialog with instructions
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
@@ -193,16 +189,5 @@ public class LoginActivity extends ActivityBase implements ParseLoginCallbacks{
         helpDialog.show();
     }
 
-    //Start the registration process for a new user
-    public void onSignupPressed(){
 
-        Log.d("Activity", "Starting signup Activity");
-        Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-        startActivity(intent);
-    }
-
-    //Disable the back button
-    public void onBackPressed() {
-
-    }
 }

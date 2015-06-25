@@ -38,7 +38,7 @@ public class MyAuthenticationListener implements LayerAuthenticationListener {
     public void onAuthenticationChallenge(final LayerClient client, String nonce) {
 
         //Validate the current Parse user
-        if(ParseUser.getCurrentUser() == null || ParseUser.getCurrentUser().getUsername() == null){
+        if (ParseUser.getCurrentUser() == null || ParseUser.getCurrentUser().getUsername() == null) {
             onAuthenticationError(client, new LayerException(LayerException.Type.USER_NOT_FOUND, "Invalid Parse User ID"));
             return;
         }
@@ -73,25 +73,25 @@ public class MyAuthenticationListener implements LayerAuthenticationListener {
     //Called when the Authentication process completes successfully. Execute the callback in the
     // current Activity
     public void onAuthenticated(LayerClient client, String userName) {
-        if(mCurrentContext != null)
+        if (mCurrentContext != null)
             mCurrentContext.onUserAuthenticated(userName);
     }
 
     //Called when the Authentication process fails. Most likely this will be because of an invalid
     // Identity Token. You can validate your token on the Layer Dashboard under "Authentication"
     public void onAuthenticationError(LayerClient layerClient, LayerException e) {
-        if(mCurrentContext != null)
+        if (mCurrentContext != null)
             mCurrentContext.onUserAuthenticatedError(e);
     }
 
     //Called when the user Deauthenticates (logs out). Execute the callback in the current Activity
     public void onDeauthenticated(LayerClient client) {
-        if(mCurrentContext != null)
+        if (mCurrentContext != null)
             mCurrentContext.onUserDeauthenticated();
     }
 
     //Helper function to keep track of the current Activity (set whenever an Activity resumes)
-    public void setActiveContext(LayerCallbacks context){
+    public void setActiveContext(LayerCallbacks context) {
         mCurrentContext = context;
     }
 }

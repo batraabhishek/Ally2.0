@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="5dp">
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="5dp">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:background="#ffdeeeff">
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="#ffdeeeff"
+                  android:orientation="horizontal"
+                  android:padding="5dp">
 
         <EditText
+            android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/user_name"
-            android:text="John Doe"
-            android:padding="3dp" />
+            android:padding="3dp"
+            android:text="John Doe"/>
 
     </LinearLayout>
 

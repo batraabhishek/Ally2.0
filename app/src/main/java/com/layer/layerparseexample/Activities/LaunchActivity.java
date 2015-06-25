@@ -37,18 +37,35 @@ public class LaunchActivity extends ActivityBase {
 //        } else {
         //The base class will create a Layer object (since one should not exist) and connect
         super.onCreate(savedInstanceState);
+
+        if (LayerImpl.isConnected()) {
+            if (LayerImpl.isAuthenticated()) {
+                Intent intent = new Intent(LaunchActivity.this, ConversationsActivity.class);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(LaunchActivity.this, LoginSignUpActivity.class);
+                startActivity(intent);
+            }
+            finish();
+        }
         setContentView(R.layout.splash_screen);
+
 //        }
+
     }
 
-    //Once Layer is connected, show the Login screen if no user is authenticated
+
+    @Override
     public void onLayerConnected() {
         if (LayerImpl.isAuthenticated()) {
             Intent intent = new Intent(LaunchActivity.this, ConversationsActivity.class);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(LaunchActivity.this, LoginActivity.class);
+            Intent intent = new Intent(LaunchActivity.this, LoginSignUpActivity.class);
             startActivity(intent);
         }
+        finish();
     }
+
+
 }

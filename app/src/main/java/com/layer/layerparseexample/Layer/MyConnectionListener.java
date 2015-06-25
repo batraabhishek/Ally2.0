@@ -18,24 +18,24 @@ public class MyConnectionListener implements LayerConnectionListener {
 
     //When a connection is established, execute the appropriate callback
     public void onConnectionConnected(LayerClient client) {
-        if(mCurrentContext != null)
+        if (mCurrentContext != null)
             mCurrentContext.onLayerConnected();
     }
 
     //When a connection is closed/dropped, execute the appropriate callback
     public void onConnectionDisconnected(LayerClient client) {
-        if(mCurrentContext != null)
+        if (mCurrentContext != null)
             mCurrentContext.onLayerDisconnected();
     }
 
     //If there was an error connecting, execute the appropriate callback
     public void onConnectionError(LayerClient client, LayerException e) {
-        if(mCurrentContext != null)
+        if (mCurrentContext != null)
             mCurrentContext.onLayerConnectionError(e);
     }
 
     //Helper function to keep track of the current Activity (set whenever an Activity resumes)
-    public void setActiveContext(LayerCallbacks context){
+    public void setActiveContext(LayerCallbacks context) {
         mCurrentContext = context;
     }
 }

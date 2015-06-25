@@ -3,9 +3,9 @@
 
     <item android:state_activated="true">
         <shape>
-            <solid android:color="@color/buildmlearn_blue_translucent" />
+            <solid android:color="@color/buildmlearn_blue_translucent"/>
         </shape>
     </item>
-    <item android:drawable="@android:color/transparent" />
+    <item android:drawable="@android:color/transparent"/>
 
 </selector>

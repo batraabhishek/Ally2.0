@@ -31,11 +31,6 @@ public abstract class QueryAdapter<Tquery extends Queryable, Tview extends Recyc
     private final RecyclerViewController<Tquery> mQueryController;
     private final Callback mCallback;
 
-    //When a new Conversation/Message is sent/received, a new Item will be inserted into the RecyclerView
-    public static interface Callback {
-        public void onItemInserted();
-    }
-
     //Binds the query and callback class
     public QueryAdapter(LayerClient client, Query<Tquery> query, Callback callback) {
         mQueryController = client.newRecyclerViewController(query, null, this);
@@ -126,5 +121,10 @@ public abstract class QueryAdapter<Tquery extends Queryable, Tview extends Recyc
     public void onQueryItemMoved(RecyclerViewController controller, int fromPosition, int toPosition) {
         Log.d("Activity", "Query Adapter onQueryItemMoved");
         notifyItemMoved(fromPosition, toPosition);
+    }
+
+    //When a new Conversation/Message is sent/received, a new Item will be inserted into the RecyclerView
+    public static interface Callback {
+        public void onItemInserted();
     }
 }

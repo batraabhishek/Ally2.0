@@ -11,5 +11,6 @@ import com.parse.ParseUser;
 public interface ParseLoginCallbacks {
 
     public void loginSucceeded(ParseUser user);
+
     public void loginFailed(ParseException e);
 }

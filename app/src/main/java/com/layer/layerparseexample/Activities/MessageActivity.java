@@ -70,18 +70,18 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
         mMessagesView = (RecyclerView) findViewById(R.id.mRecyclerView);
 
         //Check to see when the locally Authenticated user is trying to send a message
-        Button sendButton = (Button)findViewById(R.id.sendButton);
-        if(sendButton != null)
+        Button sendButton = (Button) findViewById(R.id.sendButton);
+        if (sendButton != null)
             sendButton.setOnClickListener(this);
 
         //If this is a new conversation, we will want to allow the user to add his/her friends
-        mAddUserButton = (Button)findViewById(R.id.addParticipants);
-        if(mAddUserButton != null)
+        mAddUserButton = (Button) findViewById(R.id.addParticipants);
+        if (mAddUserButton != null)
             mAddUserButton.setOnClickListener(this);
 
         //A view containing a list of all the Participants in the Conversation (not including the
         // locally authenticated user)
-        mParticipantsList = (LinearLayout)findViewById(R.id.participantList);
+        mParticipantsList = (LinearLayout) findViewById(R.id.participantList);
 
         //If the soft keyboard changes the size of the mMessagesView, we want to force the scroll to
         // the bottom of the view so the latest message is always displayed
@@ -113,7 +113,7 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
             //Now check to see if this is a new Conversation, or if the Activity needs to render an
             // existing Conversation
             Uri conversationURI = getIntent().getParcelableExtra("conversation-id");
-            if(conversationURI != null)
+            if (conversationURI != null)
                 mConversation = LayerImpl.getLayerClient().getConversation(conversationURI);
 
             //This is an existing Conversation, display the messages, otherwise, allow the user to
@@ -147,13 +147,13 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
     //Takes a String Array of user IDs, finds the display name, and adds them to the "To:" field
     // at the top of the Messages screen
-    private void populateToField(List<String> participantIds){
+    private void populateToField(List<String> participantIds) {
         //We will not include the Authenticated user in the "To:" field, since they know they are
         // already part of the Conversation
-        TextView[] participantList = new TextView[participantIds.size()-1];
+        TextView[] participantList = new TextView[participantIds.size() - 1];
         int idx = 0;
-        for(String id : participantIds){
-            if(!id.equals(LayerImpl.getLayerClient().getAuthenticatedUserId())){
+        for (String id : participantIds) {
+            if (!id.equals(LayerImpl.getLayerClient().getAuthenticatedUserId())) {
 
                 //Create a new stylized text view
                 TextView tv = new TextView(this);
@@ -186,7 +186,7 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
     //This is called when there is a valid Conversation to attach the RecyclerView to the appropriate
     // QueryAdapter. Whenever a new Message is sent to the Conversation, the RecyclerView will be updated
-    private void createMessagesAdapter(){
+    private void createMessagesAdapter() {
 
         //The Query Adapter drives the RecyclerView, and handles all the heavy lifting of checking 
         // for new Messages, and updating the RecyclerView 
@@ -236,13 +236,13 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
     }
 
     //The Authenticated User is actually sending a Message to this Conversation
-    private void sendMessage(){
+    private void sendMessage() {
 
         //First Check to see if we have a valid Conversation object
-        if(mConversation == null){
+        if (mConversation == null) {
             //Make sure there are valid participants. Since the Authenticated user will always be
             // included in a new Conversation, we check to see if there is more than one target participant
-            if(mTargetParticipants.size() > 1) {
+            if (mTargetParticipants.size() > 1) {
 
                 //Create a new conversation, and tie it to the QueryAdapter
                 mConversation = LayerImpl.getLayerClient().newConversation(mTargetParticipants);
@@ -254,17 +254,17 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
                 hideAddParticipantsButton();
 
             } else {
-                showAlert("Send Message Error","You need to specify at least one participant before sending a message.");
+                showAlert("Send Message Error", "You need to specify at least one participant before sending a message.");
                 return;
             }
         }
 
         //Grab the user's input
-        EditText input = (EditText)findViewById(R.id.textInput);
+        EditText input = (EditText) findViewById(R.id.textInput);
         String text = getTextAsString(input);
 
         //If the input is valid, create a new Message and send it to the Conversation
-        if(mConversation != null && text != null && text.length() > 0){
+        if (mConversation != null && text != null && text.length() > 0) {
 
             MessagePart part = LayerImpl.getLayerClient().newMessagePart(text);
             Message msg = LayerImpl.getLayerClient().newMessage(part);
@@ -273,12 +273,12 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
             input.setText("");
 
         } else {
-            showAlert("Send Message Error","You cannot send an empty message.");
+            showAlert("Send Message Error", "You cannot send an empty message.");
         }
     }
 
     //Shows a list of all users that can be added to the Conversation
-    private void showParticipantPicker(){
+    private void showParticipantPicker() {
 
         //Update user list from Parse
         ParseImpl.cacheAllUsers();
@@ -299,20 +299,20 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
         final HashMap<CheckBox, String> allUsers = new HashMap<>();
 
         //Create the list of participants if it hasn't been instantiated
-        if(mTargetParticipants == null)
+        if (mTargetParticipants == null)
             mTargetParticipants = new ArrayList<>();
 
         //Go through each friend and create a Checkbox with a human readable name mapped to the
         // Object ID
         Iterator itr = friends.iterator();
-        while(itr.hasNext()) {
-            String friendId = (String)itr.next();
+        while (itr.hasNext()) {
+            String friendId = (String) itr.next();
 
             CheckBox friend = new CheckBox(this);
             friend.setText(ParseImpl.getUsername(friendId));
 
             //If this user is already selected, mark the checkbox
-            if(mTargetParticipants.contains(friendId))
+            if (mTargetParticipants.contains(friendId))
                 friend.setChecked(true);
 
             checkboxList.addView(friend);
@@ -325,31 +325,31 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
         //When the user is done adding/removing participants, update the list of target users
         helpBuilder.setPositiveButton("Done",
-        new DialogInterface.OnClickListener() {
+                new DialogInterface.OnClickListener() {
 
-            public void onClick(DialogInterface dialog, int which) {
-                // Do nothing but close the dialog
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing but close the dialog
 
-                //Reset the target user list, and rebuild it based on which checkboxes are selected
-                mTargetParticipants.clear();
-                mTargetParticipants.add(LayerImpl.getLayerClient().getAuthenticatedUserId());
+                        //Reset the target user list, and rebuild it based on which checkboxes are selected
+                        mTargetParticipants.clear();
+                        mTargetParticipants.add(LayerImpl.getLayerClient().getAuthenticatedUserId());
 
-                Set checkboxes = allUsers.keySet();
-                Iterator checkItr = checkboxes.iterator();
-                while(checkItr.hasNext()){
-                    CheckBox currCheck = (CheckBox)checkItr.next();
-                    if(currCheck != null && currCheck.isChecked()){
-                        String friendID = allUsers.get(currCheck);
-                        mTargetParticipants.add(friendID);
+                        Set checkboxes = allUsers.keySet();
+                        Iterator checkItr = checkboxes.iterator();
+                        while (checkItr.hasNext()) {
+                            CheckBox currCheck = (CheckBox) checkItr.next();
+                            if (currCheck != null && currCheck.isChecked()) {
+                                String friendID = allUsers.get(currCheck);
+                                mTargetParticipants.add(friendID);
+                            }
+                        }
+
+                        Log.d("Activity", "Current participants: " + mTargetParticipants.toString());
+
+                        //Draw the list of target users
+                        populateToField(mTargetParticipants);
                     }
-                }
-
-                Log.d("Activity", "Current participants: " + mTargetParticipants.toString());
-
-                //Draw the list of target users
-                populateToField(mTargetParticipants);
-            }
-        });
+                });
 
 
         // Create and show the dialog box with list of all participants
@@ -359,8 +359,8 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
     }
 
     //When a Conversation has Messages, we disable the ability to Add/Remove participants
-    private void hideAddParticipantsButton(){
-        if(mAddUserButton != null) {
+    private void hideAddParticipantsButton() {
+        if (mAddUserButton != null) {
             mAddUserButton.setVisibility(View.GONE);
         }
     }
@@ -370,6 +370,7 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
     protected void onShowKeyboard(int keyboardHeight) {
         mMessagesView.smoothScrollToPosition(Integer.MAX_VALUE);
     }
+
     protected void onHideKeyboard() {
         mMessagesView.smoothScrollToPosition(Integer.MAX_VALUE);
     }

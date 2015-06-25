@@ -34,12 +34,14 @@ public class ParseImpl {
     // 4. Copy the "Application ID" and "Client Key" into the following fields:
     private static String ParseAppID = "0MMopA5bR1toNEFLW02ut9R5RXadxwY5ptWM90Yd";
     private static String ParseClientKey = "krZ5xTqVDUfG5kVMypR5N2O8PGZwyWpf6HbQ9Bqj";
-
+    //We keep track of all users associated with this app in Parse. You can override this to implement
+    // your own user management system (based on a friends list, for example)
+    private static HashMap<String, ParseUser> allUsers;
 
     //Merely checks to see if you have updated the App ID and Client Key. If these are set up
     // incorrectly, Parse will fail to initialize
-    public static boolean hasValidAppID(){
-        if(ParseAppID.equals("PARSE_APP_ID") || ParseClientKey.equals("PARSE_CLIENT_KEY")){
+    public static boolean hasValidAppID() {
+        if (ParseAppID.equals("PARSE_APP_ID") || ParseClientKey.equals("PARSE_CLIENT_KEY")) {
             return false;
         }
 
@@ -47,7 +49,7 @@ public class ParseImpl {
     }
 
     //Called from the Application class to set up Parse
-    public static void initialize(Context context){
+    public static void initialize(Context context) {
         // Enable Local Datastore.
         Parse.enableLocalDatastore(context.getApplicationContext());
         Parse.initialize(context.getApplicationContext(), ParseAppID, ParseClientKey);
@@ -60,12 +62,12 @@ public class ParseImpl {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     // The user is logged in.
-                    if(callback != null)
+                    if (callback != null)
                         callback.loginSucceeded(user);
                     Log.d("Parse", "Parse user login success: " + user.getUsername());
                 } else {
                     // Signup failed. Look at the ParseException to see what happened.
-                    if(callback != null)
+                    if (callback != null)
                         callback.loginFailed(e);
                     Log.d("Parse", "Parse user login failed");
                     Log.d("Parse", e.toString());
@@ -76,7 +78,7 @@ public class ParseImpl {
 
     //Allow a new user to register. Pass in their details. On success, they will be logged in, and
     // we can continue the sign in flow
-    public static void registerUser(String username, String password, String email, final ParseLoginCallbacks callback){
+    public static void registerUser(String username, String password, String email, final ParseLoginCallbacks callback) {
 
         final ParseUser user = new ParseUser();
         user.setUsername(username);
@@ -97,21 +99,18 @@ public class ParseImpl {
     }
 
     //Returns the ParseUser object of the currently signed in user
-    public static ParseUser getRegisteredUser(){
+    public static ParseUser getRegisteredUser() {
         return ParseUser.getCurrentUser();
     }
 
-    //We keep track of all users associated with this app in Parse. You can override this to implement
-    // your own user management system (based on a friends list, for example)
-    private static HashMap<String, ParseUser> allUsers;
-    public static void cacheAllUsers(){
+    public static void cacheAllUsers() {
 
         ParseQuery<ParseUser> userQuery = ParseUser.getQuery();
         userQuery.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> results, ParseException e) {
-                if(e == null){
+                if (e == null) {
                     allUsers = new HashMap<>();
-                    for(int i = 0; i < results.size(); i++){
+                    for (int i = 0; i < results.size(); i++) {
                         allUsers.put(results.get(i).getObjectId(), results.get(i));
                     }
                 }
@@ -120,23 +119,23 @@ public class ParseImpl {
     }
 
     //Returns all users NOT including the currently signed in user
-    public static Set<String> getAllFriends(){
+    public static Set<String> getAllFriends() {
         Set<String> friends = allUsers.keySet();
         String currentUserId = ParseUser.getCurrentUser().getObjectId();
-        if(friends.contains(currentUserId))
+        if (friends.contains(currentUserId))
             friends.remove(currentUserId);
         return friends;
     }
 
     //Takes a ParseObject id and returns the associated username (handle) for display purposes
-    public static String getUsername(String id){
+    public static String getUsername(String id) {
 
         //Does this id appear in the "all users" list?
-        if(id != null && allUsers != null && allUsers.containsKey(id) && allUsers.get(id) != null)
+        if (id != null && allUsers != null && allUsers.containsKey(id) && allUsers.get(id) != null)
             return allUsers.get(id).getUsername();
 
         //Does this id belong to the currently signed in user?
-        if(id != null && ParseUser.getCurrentUser() != null && id.equals(ParseUser.getCurrentUser().getObjectId()))
+        if (id != null && ParseUser.getCurrentUser() != null && id.equals(ParseUser.getCurrentUser().getObjectId()))
             return ParseUser.getCurrentUser().getUsername();
 
         //If the handle can't be found, return whatever value was passed in

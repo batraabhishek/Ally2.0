@@ -1,53 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="1">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:padding="5dp"
         android:background="#CCCCCC"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:padding="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
 
         <Button
+            android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Logout"
-            android:id="@+id/logout"
-            android:layout_alignTop="@+id/heading" />
+            android:layout_alignTop="@+id/heading"
+            android:text="Logout"/>
 
         <TextView
+            android:id="@+id/heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Conversations"
-            android:id="@+id/heading"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:paddingTop="10dp"
+            android:layout_centerVertical="true"
             android:paddingBottom="10dp"
-            android:textSize="25dp" />
+            android:paddingTop="10dp"
+            android:text="Conversations"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="25dp"/>
 
         <Button
+            android:id="@+id/newConversation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New"
-            android:id="@+id/newConversation"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/heading" />
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/heading"
+            android:text="New"/>
 
     </RelativeLayout>
 
     <view
+        android:id="@+id/recyclerView"
+        class="android.support.v7.widget.RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="android.support.v7.widget.RecyclerView"
-        android:id="@+id/recyclerView"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
