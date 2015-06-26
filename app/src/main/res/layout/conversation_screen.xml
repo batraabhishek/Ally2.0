@@ -1,54 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:weightSum="1">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:fab="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1">
 
-    <RelativeLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Toolbar.Buildmlearn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="#CCCCCC"
-        android:padding="5dp"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp">
+        android:layout_height="?attr/actionBarSize"/>
 
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/heading"
-            android:text="Logout"/>
 
-        <TextView
-            android:id="@+id/heading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="Conversations"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="25dp"/>
-
-        <Button
-            android:id="@+id/newConversation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/heading"
-            android:text="New"/>
-
-    </RelativeLayout>
 
     <view
         android:id="@+id/recyclerView"
         class="android.support.v7.widget.RecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/toolbar"/>
 
-</LinearLayout>
+    <com.getbase.floatingactionbutton.AddFloatingActionButton
+        android:id="@+id/newConversation"
+        fab:fab_colorNormal="@color/color_accent"
+        fab:fab_colorPressed="@color/floating_action_button_pressed"
+        fab:fab_plusIconColor="@color/floating_action_button_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/floating_action_button_padding_bottom_right"
+        android:layout_marginRight="@dimen/floating_action_button_padding_bottom_right"/>
+
+</RelativeLayout>

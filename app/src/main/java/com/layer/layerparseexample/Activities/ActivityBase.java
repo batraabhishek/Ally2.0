@@ -125,65 +125,6 @@ public class ActivityBase extends AppCompatActivity implements LayerCallbacks, V
     protected void onHideKeyboard() {
     }
 
-    //A helper class that adds several Views to a LinearLayout with automatic wrapping, so that
-    // items in the views array don't get cut off. In other words, turns this:
-    //
-    //  |item1 item2 item3 it|
-    //
-    // into this:
-    //
-    //  |item1 item2 item3  |
-    //  |item4 item5 item6  |
-    //
-    protected void populateViewWithWrapping(LinearLayout linearLayout, View[] views, Context context) {
-
-        Display display = getWindowManager().getDefaultDisplay();
-        linearLayout.removeAllViews();
-
-        Point size = new Point();
-        display.getSize(size);
-        int maxWidth = size.x;
-
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-
-        LinearLayout.LayoutParams params;
-        LinearLayout newLL = new LinearLayout(context);
-        newLL.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        newLL.setGravity(Gravity.LEFT);
-        newLL.setOrientation(LinearLayout.HORIZONTAL);
-
-        int widthSoFar = 0;
-
-        for (View view : views) {
-            LinearLayout LL = new LinearLayout(context);
-            LL.setOrientation(LinearLayout.HORIZONTAL);
-            LL.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
-            LL.setLayoutParams(new ListView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-            view.measure(0, 0);
-            params = new LinearLayout.LayoutParams(view.getMeasuredWidth(), ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(5, 0, 5, 0);
-
-            LL.addView(view, params);
-            LL.measure(0, 0);
-            widthSoFar += view.getMeasuredWidth();
-            if (widthSoFar >= maxWidth) {
-                linearLayout.addView(newLL);
-
-                newLL = new LinearLayout(context);
-                newLL.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                newLL.setOrientation(LinearLayout.HORIZONTAL);
-                newLL.setGravity(Gravity.LEFT);
-                params = new LinearLayout.LayoutParams(LL.getMeasuredWidth(), LL.getMeasuredHeight());
-                newLL.addView(LL, params);
-                widthSoFar = LL.getMeasuredWidth();
-            } else {
-                newLL.addView(LL);
-            }
-        }
-        linearLayout.addView(newLL);
-    }
-
     protected void attachKeyboardListeners(ViewGroup group) {
         if (mKeyboardListenersAttached) {
             return;

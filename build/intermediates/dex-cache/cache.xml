@@ -72,6 +72,13 @@
         <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-e8d4fe15e123b72fd341916bbe2fe63140880dfc.jar" />
     </item>
     <item
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.9.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f2b8a750df2a5d485d0c40b379b44371c5e6d98d">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-9fcf04f2bbeaad281a96e4464b874e0db70eb38c.jar" />
+    </item>
+    <item
         jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"

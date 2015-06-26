@@ -23,7 +23,7 @@ import com.parse.ParseUser;
 public class SignupActivity extends ActivityBase implements ParseLoginCallbacks {
 
     //Signup input fields
-    private EditText mUsername, mPassword, mEmail;
+    private EditText mUsername, mPassword, mEmail, mName;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,7 @@ public class SignupActivity extends ActivityBase implements ParseLoginCallbacks 
         mUsername = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
         mEmail = (EditText) findViewById(R.id.email);
+        mName = (EditText)findViewById(R.id.name);
     }
 
     //Starts the registration process once the user taps the signup button
@@ -59,9 +60,15 @@ public class SignupActivity extends ActivityBase implements ParseLoginCallbacks 
         String usernameString = getTextAsString(mUsername);
         String passwordString = getTextAsString(mPassword);
         String emailString = getTextAsString(mEmail);
+        String userName = getTextAsString(mName);
+
 
         //Make sure the username is valid
-        if (usernameString.length() <= 3) {
+        if(userName.length() <= 3) {
+            showAlert("Sign Up Error", "A valid name longer than 3 characters is required to sign up.");
+            Log.d("Activity", "Cannot create account, name is too short");
+        }
+        else if (usernameString.length() <= 3) {
 
             showAlert("Sign Up Error", "A valid username longer than 3 characters is required to sign up.");
             Log.d("Activity", "Cannot create account, username is too short");
@@ -82,7 +89,7 @@ public class SignupActivity extends ActivityBase implements ParseLoginCallbacks 
         } else {
 
             Log.d("Activity", "Staring registration process for " + usernameString);
-            ParseImpl.registerUser(usernameString, passwordString, emailString, this);
+            ParseImpl.registerUser(usernameString, passwordString, emailString, userName, this);
 
         }
     }

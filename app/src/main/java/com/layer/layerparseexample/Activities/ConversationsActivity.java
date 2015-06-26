@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
 import com.layer.layerparseexample.Adapters.ConversationQueryAdapter;
 import com.layer.layerparseexample.Adapters.QueryAdapter;
@@ -39,14 +41,13 @@ public class ConversationsActivity extends ActivityBase implements ConversationQ
         //Display the Conversation view
         setContentView(R.layout.conversation_screen);
 
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
         //Register the button click listeners
-        Button newConversationBtn = (Button) findViewById(R.id.newConversation);
+        View newConversationBtn = findViewById(R.id.newConversation);
         if (newConversationBtn != null)
             newConversationBtn.setOnClickListener(this);
 
-        Button logoutBtn = (Button) findViewById(R.id.logout);
-        if (logoutBtn != null)
-            logoutBtn.setOnClickListener(this);
 
     }
 
@@ -137,11 +138,6 @@ public class ConversationsActivity extends ActivityBase implements ConversationQ
 
         switch (v.getId()) {
 
-            case R.id.logout:
-                Log.d("Activity", "Logout button pressed");
-                logoutUser();
-                break;
-
             case R.id.newConversation:
                 Log.d("Activity", "New conversation button pressed");
                 createConversation();
@@ -169,8 +165,24 @@ public class ConversationsActivity extends ActivityBase implements ConversationQ
         startActivity(intent);
     }
 
-    //When the back button is pressed, log out and return to the login screen
-    public void onBackPressed() {
-        logoutUser();
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.conversation_menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_signout) {
+            logoutUser();
+        }
+
+        return true;
     }
 }

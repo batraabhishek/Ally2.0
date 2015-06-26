@@ -8,6 +8,7 @@ import com.layer.sdk.messaging.MessagePart;
 
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -142,7 +143,7 @@ public class LayerImpl {
                 try {
 
                     if (part.getMimeType().equals("text/plain"))
-                        msgContent += new String(part.getData(), "UTF-8") + "\n";
+                        msgContent += new String(part.getData(), "UTF-8");
 
                 } catch (UnsupportedEncodingException e) {
 
@@ -157,9 +158,22 @@ public class LayerImpl {
     // ReceivedAt time (the local time the message was downloaded to the device)
     public static String getReceivedAtTime(Message msg) {
         String dateString = "";
+
+        Date nowTime = new Date();
+        SimpleDateFormat getDayFormater = new SimpleDateFormat("d");
+        int dayToday = Integer.parseInt(getDayFormater.format(nowTime));
+
         if (msg != null && msg.getReceivedAt() != null) {
-            SimpleDateFormat format = new SimpleDateFormat("M/dd hh:mm:ss");
-            dateString = format.format(msg.getReceivedAt());
+            int currentDay = Integer.parseInt(getDayFormater.format(msg.getReceivedAt()));
+
+            if (dayToday == currentDay) {
+                SimpleDateFormat format = new SimpleDateFormat("h:mm a");
+                dateString = format.format(msg.getReceivedAt());
+            } else {
+
+                SimpleDateFormat format = new SimpleDateFormat("M/dd hh:mm:ss");
+                dateString = format.format(msg.getReceivedAt());
+            }
         }
         return dateString;
     }

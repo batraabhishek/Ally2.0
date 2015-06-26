@@ -4,79 +4,24 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Toolbar.Buildmlearn"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp">
 
-            <TextView
-                android:id="@+id/ToLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignTop="@+id/participantList"
-                android:padding="5dp"
-                android:text="To:"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-            <LinearLayout
-                android:id="@+id/participantList"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/addParticipants"
-                android:layout_toRightOf="@+id/ToLabel"
-                android:layout_toStartOf="@+id/addParticipants"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/addParticipants"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:enabled="true"
-                android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:text="+"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/topDivider"
+        <view
+            android:id="@+id/mRecyclerView"
+            class="android.support.v7.widget.RecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/relativeLayout"
-            android:background="#ff615fff"
-            android:measureWithLargestChild="false"
-            android:minHeight="1dp"
-            android:orientation="vertical"></LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linearLayout"/>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_above="@+id/bottomDivider"
-            android:layout_below="@+id/topDivider"
-            android:orientation="vertical">
-
-            <view
-                android:id="@+id/mRecyclerView"
-                class="android.support.v7.widget.RecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"/>
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/bottomDivider"
@@ -84,36 +29,38 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="false"
-            android:layout_alignTop="@+id/textInput"
             android:background="#ff615fff"
             android:measureWithLargestChild="false"
             android:minHeight="1dp"
             android:orientation="vertical"/>
 
-        <EditText
-            android:id="@+id/textInput"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/relativeLayout"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/sendButton"
-            android:layout_toStartOf="@+id/sendButton"
-            android:hint="Your Message..."
-            android:padding="12dp"/>
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/sendButton"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:clickable="true"
-            android:enabled="true"
-            android:text="Send"/>
+            <EditText
+                android:id="@+id/textInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:hint="Your Message..."
+                android:padding="12dp"/>
+
+            <Button
+                android:id="@+id/sendButton"
+                style="@style/Button.Raised"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:enabled="true"
+                android:text="Send"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
 </LinearLayout>

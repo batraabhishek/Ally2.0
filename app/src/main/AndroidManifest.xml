@@ -41,10 +41,13 @@
         </activity>
         <activity android:name=".Activities.SignupActivity">
         </activity>
-        <activity android:name=".Activities.ConversationsActivity">
+        <activity
+            android:name=".Activities.ConversationsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".Activities.MessageActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
         <activity

@@ -78,9 +78,10 @@ public class ParseImpl {
 
     //Allow a new user to register. Pass in their details. On success, they will be logged in, and
     // we can continue the sign in flow
-    public static void registerUser(String username, String password, String email, final ParseLoginCallbacks callback) {
+    public static void registerUser(String username, String password, String email, String name, final ParseLoginCallbacks callback) {
 
         final ParseUser user = new ParseUser();
+        user.put("name", name);
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
@@ -137,6 +138,18 @@ public class ParseImpl {
         //Does this id belong to the currently signed in user?
         if (id != null && ParseUser.getCurrentUser() != null && id.equals(ParseUser.getCurrentUser().getObjectId()))
             return ParseUser.getCurrentUser().getUsername();
+
+        //If the handle can't be found, return whatever value was passed in
+        return id;
+    }
+
+    public static String getName(String id) {
+        if (id != null && allUsers != null && allUsers.containsKey(id) && allUsers.get(id) != null)
+            return (String)allUsers.get(id).get("name");
+
+        //Does this id belong to the currently signed in user?
+        if (id != null && ParseUser.getCurrentUser() != null && id.equals(ParseUser.getCurrentUser().getObjectId()))
+            return (String)ParseUser.getCurrentUser().get("name");
 
         //If the handle can't be found, return whatever value was passed in
         return id;

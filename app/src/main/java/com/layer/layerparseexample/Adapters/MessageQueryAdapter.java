@@ -1,7 +1,9 @@
 package com.layer.layerparseexample.Adapters;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -45,6 +47,8 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
     // MessageActivity class implements the MessageClickHandler
     private final MessageClickHandler mMessageClickHandler;
 
+    private Context mContext;
+
     //Constructor for the MessasgeQueryAdapter
     //Sorts all messages belonging to this conversation by its position. This will guarantee all
     // messages will appear "in order"
@@ -54,10 +58,12 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
                 .sortDescriptor(new SortDescriptor(Message.Property.POSITION, SortDescriptor.Order.ASCENDING))
                 .build(), callback);
 
+
         //Sets the LayoutInflator, Click callback handler, and the view parent
         mInflater = LayoutInflater.from(context);
         mMessageClickHandler = messageClickHandler;
         mParentView = recyclerView;
+        this.mContext = context;
     }
 
     //When a Message is added to this conversation, a new ViewHolder is created
@@ -97,13 +103,40 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
         //Right align if the authenticated user (local user) sent the message, otherwise left align
         // the message box
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.weight = 1.0f;
+//        params.weight = 1.0f;
+        Drawable dialog;
+
         if (message != null && !senderId.equals(LayerImpl.getLayerClient().getAuthenticatedUserId())) {
+
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                dialog = mContext.getDrawable(R.drawable.dialog_left_1);
+                dialog.mutate().setColorFilter(mContext.getResources().getColor(R.color.color_primary), PorterDuff.Mode.SRC_IN);
+                viewHolder.contentLayout.setBackground(dialog);
+            } else {
+                dialog = mContext.getResources().getDrawable(R.drawable.dialog_left_1);
+                dialog.mutate().setColorFilter(mContext.getResources().getColor(R.color.color_primary), PorterDuff.Mode.SRC_IN);
+                viewHolder.contentLayout.setBackgroundDrawable(dialog);
+
+            }
+
+
             params.gravity = Gravity.LEFT;
-            viewHolder.contentLayout.setBackgroundColor(Color.YELLOW);
+
+//            viewHolder.contentLayout.setBackgroundColor(Color.YELLOW);
         } else {
+
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                dialog = mContext.getDrawable(R.drawable.dialog_left);
+                dialog.mutate().setColorFilter(mContext.getResources().getColor(R.color.color_primary_dark), PorterDuff.Mode.SRC_IN);
+                viewHolder.contentLayout.setBackground(dialog);
+            } else {
+                dialog = mContext.getResources().getDrawable(R.drawable.dialog_left);
+                dialog.mutate().setColorFilter(mContext.getResources().getColor(R.color.color_primary_dark), PorterDuff.Mode.SRC_IN);
+                viewHolder.contentLayout.setBackgroundDrawable(dialog);
+
+            }
             params.gravity = Gravity.RIGHT;
-            viewHolder.contentLayout.setBackgroundColor(Color.CYAN);
+//            viewHolder.contentLayout.setBackgroundColor(Color.CYAN);
         }
         viewHolder.contentLayout.setLayoutParams(params);
 
