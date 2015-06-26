@@ -1,66 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:padding="5dp">
+              android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+        <com.layer.layerparseexample.Views.TextViewPlus
+            android:id="@+id/text_icon"
+            style="@style/TextView.CircleIcon"
+            android:layout_gravity="center_vertical"
+            android:padding="2dp"
+            android:text="S"/>
 
-            <TextView
-                android:id="@+id/participants"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_toLeftOf="@+id/time"
-                android:maxLines="1"
-                android:paddingBottom="5dp"
-                android:singleLine="true"
-                android:text="Neil, Drew"
-                android:textColor="#ff000000"
-                android:textSize="15dp"
-                android:textStyle="bold">
-            </TextView>
-
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:paddingLeft="10dp"
-                android:text="Oct 17"
-                android:textColor="#ffaaaaaa"/>
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/message"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:text="Last message content"
-            android:textAlignment="gravity"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ff2a2a2a"/>
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <view
+                android:id="@+id/participants"
+                style="@style/TextView.Title.Thin"
+                class="com.layer.layerparseexample.Views.TextViewPlus"
+                android:layout_marginLeft="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="16dp"
+                android:text="Seema Batra"/>
+
+            <view
+                android:id="@+id/message"
+                style="@style/TextView.Body1"
+                class="com.layer.layerparseexample.Views.TextViewPlus"
+                android:layout_marginLeft="16dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="16dp"
+                android:text="Good Morning"/>
+        </LinearLayout>
+
+
+        <com.layer.layerparseexample.Views.TextViewPlus
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="10:10 PM"
+            android:textColor="@color/black_secondary_text"/>
 
     </LinearLayout>
 
     <View
-        android:id="@+id/separator"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:paddingTop="5dp"
-        android:visibility="visible">
+        android:layout_marginLeft="72dp"
+        android:background="@color/color_divider">
+
     </View>
+
 
 </LinearLayout>

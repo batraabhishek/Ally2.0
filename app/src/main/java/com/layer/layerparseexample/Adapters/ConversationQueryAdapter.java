@@ -2,15 +2,14 @@ package com.layer.layerparseexample.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.layer.layerparseexample.Layer.LayerImpl;
 import com.layer.layerparseexample.Parse.ParseImpl;
 import com.layer.layerparseexample.R;
+import com.layer.layerparseexample.Views.TextViewPlus;
 import com.layer.sdk.LayerClient;
 import com.layer.sdk.messaging.Conversation;
 import com.layer.sdk.messaging.Message;
@@ -62,9 +61,11 @@ public class ConversationQueryAdapter extends QueryAdapter<Conversation, Convers
 
         //Tie the view elements to the fields in the actual view after it has been created
         ViewHolder holder = new ViewHolder(itemView, mConversationClickHandler);
-        holder.participants = (TextView) itemView.findViewById(R.id.participants);
-        holder.time = (TextView) itemView.findViewById(R.id.time);
-        holder.lastMsgContent = (TextView) itemView.findViewById(R.id.message);
+        holder.participants = (TextViewPlus) itemView.findViewById(R.id.participants);
+        holder.time = (TextViewPlus) itemView.findViewById(R.id.time);
+        holder.lastMsgContent = (TextViewPlus) itemView.findViewById(R.id.message);
+        holder.textIcon = (TextViewPlus) itemView.findViewById(R.id.text_icon);
+
 
         return holder;
     }
@@ -94,13 +95,14 @@ public class ConversationQueryAdapter extends QueryAdapter<Conversation, Convers
             }
         }
         viewHolder.participants.setText(participants);
+        viewHolder.textIcon.setText(participants.substring(0, 1));
 
         //Grab the last message in the conversation and show it in the format "sender: last message content"
         Message message = conversation.getLastMessage();
         if (message != null) {
-            viewHolder.lastMsgContent.setText(ParseImpl.getUsername(message.getSender().getUserId()) + ": " + LayerImpl.getMessageText(message));
+            viewHolder.lastMsgContent.setText(LayerImpl.getMessageText(message).replaceAll("\n", " "));
         } else {
-            viewHolder.lastMsgContent.setText("");
+            viewHolder.lastMsgContent.setVisibility(View.GONE);
         }
 
         //Draw the date the last message was received (downloaded from the server)
@@ -125,9 +127,10 @@ public class ConversationQueryAdapter extends QueryAdapter<Conversation, Convers
             implements View.OnClickListener, View.OnLongClickListener {
 
         public final ConversationClickHandler conversationClickHandler;
-        public TextView participants;
-        public TextView time;
-        public TextView lastMsgContent;
+        public TextViewPlus participants;
+        public TextViewPlus time;
+        public TextViewPlus lastMsgContent;
+        public TextViewPlus textIcon;
         public Conversation conversation;
 
         //Registers the click listener callback handler

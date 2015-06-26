@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:animateLayoutChanges="true"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.layer.layerparseexample.Views.TextViewPlus
+            android:id="@+id/info_template_edit"
+            style="@style/TextView.CircleIcon"
+            android:layout_gravity="center_vertical"
+            android:padding="2dp"
+            android:text="S"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <view
+                android:id="@+id/info_object"
+                style="@style/TextView.Title.Thin"
+                class="com.layer.layerparseexample.Views.TextViewPlus"
+                android:layout_marginLeft="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="16dp"
+                android:text="Seema Batra"/>
+
+            <view
+                android:id="@+id/info_description"
+                style="@style/TextView.Body1"
+                class="com.layer.layerparseexample.Views.TextViewPlus"
+                android:layout_marginLeft="16dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="16dp"
+                android:text="Good Morning"/>
+        </LinearLayout>
+
+
+        <com.layer.layerparseexample.Views.TextViewPlus
+            android:id="@+id/info_template_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="10:10 PM"
+            android:textColor="@color/black_secondary_text"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/color_divider">
+
+    </View>
+
+
+</LinearLayout>
