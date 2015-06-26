@@ -77,10 +77,6 @@ public class ConversationQueryAdapter extends QueryAdapter<Conversation, Convers
             return;
         }
 
-        Log.d("Activity", "binding conversation: " + conversation.getId() + " with participants: " + conversation.getParticipants().toString());
-
-        //Set the Conversation (so when this item is clicked, we can start a MessageActivity and
-        // show all the messages associated with it)
         viewHolder.conversation = conversation;
 
         //Go through all the User IDs in the Conversation and find the matching human readable
@@ -94,7 +90,7 @@ public class ConversationQueryAdapter extends QueryAdapter<Conversation, Convers
                     participants += ", ";
 
                 //Add the human readable username to the String
-                participants += ParseImpl.getUsername(users.get(i));
+                participants += ParseImpl.getName(users.get(i));
             }
         }
         viewHolder.participants.setText(participants);
@@ -129,9 +125,6 @@ public class ConversationQueryAdapter extends QueryAdapter<Conversation, Convers
             implements View.OnClickListener, View.OnLongClickListener {
 
         public final ConversationClickHandler conversationClickHandler;
-        //For each Conversation item in the RecyclerView list, we show the participants, time,
-        // contents of the last message, and have a reference to the conversation so when it is
-        // clicked we can start the MessageActivity
         public TextView participants;
         public TextView time;
         public TextView lastMsgContent;

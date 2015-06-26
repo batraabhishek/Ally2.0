@@ -69,10 +69,8 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
     //When a Message is added to this conversation, a new ViewHolder is created
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
 
-        //The message_item is just an example view you can use to display each message in a list
         View itemView = mInflater.inflate(R.layout.message_item, mParentView, false);
 
-        //Tie the view elements to the fields in the actual view after it has been created
         ViewHolder holder = new ViewHolder(itemView, mMessageClickHandler);
         holder.sender = (TextView) itemView.findViewById(R.id.senderID);
         holder.content = (TextView) itemView.findViewById(R.id.msgContent);
@@ -96,14 +94,13 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
 
         //Set the content of the message, sender, and received time
         viewHolder.content.setText(LayerImpl.getMessageText(message));
-        viewHolder.sender.setText(ParseImpl.getUsername(senderId));
+        viewHolder.sender.setText(ParseImpl.getName(senderId));
         viewHolder.time.setText(LayerImpl.getReceivedAtTime(message));
         viewHolder.message = message;
 
         //Right align if the authenticated user (local user) sent the message, otherwise left align
         // the message box
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//        params.weight = 1.0f;
         Drawable dialog;
 
         if (message != null && !senderId.equals(LayerImpl.getLayerClient().getAuthenticatedUserId())) {
@@ -119,10 +116,10 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
 
             }
 
+            viewHolder.sender.setVisibility(View.GONE);
 
             params.gravity = Gravity.LEFT;
 
-//            viewHolder.contentLayout.setBackgroundColor(Color.YELLOW);
         } else {
 
             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -136,8 +133,8 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
 
             }
             params.gravity = Gravity.RIGHT;
-//            viewHolder.contentLayout.setBackgroundColor(Color.CYAN);
         }
+        params.weight = 1.0f;
         viewHolder.contentLayout.setLayoutParams(params);
 
     }

@@ -62,7 +62,6 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
                 startActivity(intent);
 
             } else {
-
                 LayerImpl.authenticateUser();
 
             }
@@ -80,24 +79,15 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
         }
     }
 
-    //Existing Conversation, so render the messages in the RecyclerView
     private void setupMessagesView() {
 
-        Log.d("Activity", "Conversation exists, setting up view");
-
-        //Hide the "add users" button
         hideAddParticipantsButton();
-
-        //Create the appropriate RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mMessagesView.setLayoutManager(layoutManager);
-
         createMessagesAdapter();
         populateToField(mConversation.getParticipants());
     }
 
-    //Takes a String Array of user IDs, finds the display name, and adds them to the "To:" field
-    // at the top of the Messages screen
     private void populateToField(List<String> participantIds) {
 
         String participants = "";
@@ -119,57 +109,35 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
         getSupportActionBar().setTitle(participants);
 
-        //Uses the helper function to make sure all participant names are appropriately displayed
-        // and not cut off due to size constraints
     }
 
-    //If a Conversation ID was not passed into this Activity, we assume that a new Conversation is
-    // being created
     private void createNewConversationView() {
 
-        Log.d("Activity", "Creating a new Conversation");
-
-        //Create the appropriate RecyclerView which will be attached to the QueryController when it
-        // is created (after the first message is sent and the Conversation is actually created)
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mMessagesView.setLayoutManager(layoutManager);
     }
 
-    //This is called when there is a valid Conversation to attach the RecyclerView to the appropriate
-    // QueryAdapter. Whenever a new Message is sent to the Conversation, the RecyclerView will be updated
     private void createMessagesAdapter() {
 
-        //The Query Adapter drives the RecyclerView, and handles all the heavy lifting of checking 
-        // for new Messages, and updating the RecyclerView 
         mMessagesAdapter = new MessageQueryAdapter(getApplicationContext(), LayerImpl.getLayerClient(), mMessagesView, mConversation, this, new QueryAdapter.Callback() {
 
             public void onItemInserted() {
-                //When a new item is inserted into the RecyclerView, scroll to the bottom so the
-                // most recent Message is always displayed
                 mMessagesView.smoothScrollToPosition(Integer.MAX_VALUE);
             }
         });
         mMessagesView.setAdapter(mMessagesAdapter);
-
-        //Execute the Query
         mMessagesAdapter.refresh();
-
-        //Start by scrolling to the bottom (newest Message)
         mMessagesView.smoothScrollToPosition(Integer.MAX_VALUE);
     }
 
-    //You can choose to present additional options when a Message is tapped
     public void onMessageClick(Message message) {
 
     }
 
-    //You can choose to present additional options when a Message is long tapped
     public boolean onMessageLongClick(Message message) {
         return false;
     }
 
-
-    //Handle the sendButtona nd Add/Remove Participants button (if displayed)
     public void onClick(View v) {
 
         switch (v.getId()) {
@@ -299,8 +267,6 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 //        findViewById(R.id.action_add_part).setVisibility(View.GONE);
     }
 
-    //When the RecyclerView changes size because of the Soft Keyboard, force scroll to the bottom
-    // in order to always show the latest message
     protected void onShowKeyboard(int keyboardHeight) {
         mMessagesView.smoothScrollToPosition(Integer.MAX_VALUE);
     }
@@ -320,9 +286,6 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_add_part) {
             showParticipantPicker();

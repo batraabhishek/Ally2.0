@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.layer.layerparseexample.Layer.LayerImpl;
+import com.layer.layerparseexample.Parse.ParseImpl;
 import com.layer.layerparseexample.R;
 
 /*
@@ -37,6 +38,8 @@ public class LaunchActivity extends ActivityBase {
 //        } else {
         //The base class will create a Layer object (since one should not exist) and connect
         super.onCreate(savedInstanceState);
+        ParseImpl.cacheAllUsers();
+
 
         if (LayerImpl.isConnected()) {
             if (LayerImpl.isAuthenticated()) {
@@ -57,6 +60,9 @@ public class LaunchActivity extends ActivityBase {
 
     @Override
     public void onLayerConnected() {
+
+
+
         if (LayerImpl.isAuthenticated()) {
             Intent intent = new Intent(LaunchActivity.this, ConversationsActivity.class);
             startActivity(intent);
