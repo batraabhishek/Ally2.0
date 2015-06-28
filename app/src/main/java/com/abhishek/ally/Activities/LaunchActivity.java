@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.abhishek.ally.Layer.LayerImpl;
 import com.abhishek.ally.Parse.ParseImpl;
-import com.layer.layerparseexample.R;
+import com.abhhishek.ally.R;
 
 /*
  * LaunchActivity.java

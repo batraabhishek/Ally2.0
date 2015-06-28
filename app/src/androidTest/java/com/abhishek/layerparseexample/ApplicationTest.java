@@ -1,4 +1,4 @@
-package com.layer.layerparseexample;
+package com.abhishek.layerparseexample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

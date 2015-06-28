@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.layer.layerparseexample.R;
+import com.abhhishek.ally.R;
 
 public class LoginSignUpActivity extends AppCompatActivity {
 

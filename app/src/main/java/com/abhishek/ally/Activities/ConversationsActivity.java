@@ -14,7 +14,7 @@ import com.abhishek.ally.Adapters.ConversationQueryAdapter;
 import com.abhishek.ally.Adapters.QueryAdapter;
 import com.abhishek.ally.Layer.LayerImpl;
 import com.abhishek.ally.Parse.ParseImpl;
-import com.layer.layerparseexample.R;
+import com.abhhishek.ally.R;
 import com.layer.sdk.messaging.Conversation;
 import com.parse.ParseUser;
 

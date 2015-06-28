@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.layer.layerparseexample"
+        applicationId "com.abhishek.ally"
         minSdkVersion 14
         targetSdkVersion 21
         versionCode 1

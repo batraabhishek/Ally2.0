@@ -10,7 +10,7 @@ import android.widget.EditText;
 import com.abhishek.ally.Layer.LayerImpl;
 import com.abhishek.ally.Parse.ParseImpl;
 import com.abhishek.ally.Parse.ParseLoginCallbacks;
-import com.layer.layerparseexample.R;
+import com.abhhishek.ally.R;
 import com.layer.sdk.exceptions.LayerException;
 import com.parse.ParseException;
 import com.parse.ParseUser;

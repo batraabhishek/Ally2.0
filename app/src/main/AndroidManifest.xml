@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    package="com.layer.layerparseexample"
+    package="com.layer.ally"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Layer SDK uses these for monitoring network state and receiving GCM -->
