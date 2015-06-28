@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:fab="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
@@ -30,15 +31,7 @@
             android:layout_alignParentTop="true"
             android:gravity="center">
 
-            <com.abhishek.ally.Views.TextViewPlus
-                android:id="@+id/emo_icon"
-                style="@style/TextView.CircleIcon.Light"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:text=":-|"
-                android:textSize="70sp"/>
+
         </LinearLayout>
 
 
@@ -60,24 +53,37 @@
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
+            <com.abhishek.ally.Views.TextViewPlus
+                android:id="@+id/emo_icon"
+                style="@style/TextView.CircleIcon.Light"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text=":-|"
+                android:textSize="24sp"
+                />
+
             <EditText
                 android:id="@+id/textInput"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 android:hint="Your Message..."
                 android:padding="12dp"/>
 
-            <Button
+
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/sendButton"
-                style="@style/Button.Raised"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:clickable="true"
-                android:enabled="true"
-                android:text="Send"/>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                fab:fab_icon="@drawable/ic_content_send"
+                fab:fab_colorNormal="@color/color_accent"
+                fab:fab_colorPressed="@color/floating_action_button_pressed"
+               />
 
         </LinearLayout>
 

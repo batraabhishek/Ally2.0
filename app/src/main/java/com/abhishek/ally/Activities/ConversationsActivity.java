@@ -14,7 +14,7 @@ import com.abhishek.ally.Adapters.ConversationQueryAdapter;
 import com.abhishek.ally.Adapters.QueryAdapter;
 import com.abhishek.ally.Layer.LayerImpl;
 import com.abhishek.ally.Parse.ParseImpl;
-import com.abhhishek.ally.R;
+import com.layer.ally.R;
 import com.layer.sdk.messaging.Conversation;
 import com.parse.ParseUser;
 
@@ -161,8 +161,9 @@ public class ConversationsActivity extends ActivityBase implements ConversationQ
     //Once the user is fully deauthetnicated (all Messaging activity is synced and deleted), we
     // allow another user to login
     public void onUserDeauthenticated() {
-        Intent intent = new Intent(ConversationsActivity.this, LoginActivity.class);
+        Intent intent = new Intent(ConversationsActivity.this, LoginSignUpActivity.class);
         startActivity(intent);
+        finish();
     }
 
 

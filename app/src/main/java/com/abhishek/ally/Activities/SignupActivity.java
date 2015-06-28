@@ -2,6 +2,7 @@ package com.abhishek.ally.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import android.widget.EditText;
 import com.abhishek.ally.Layer.LayerImpl;
 import com.abhishek.ally.Parse.ParseImpl;
 import com.abhishek.ally.Parse.ParseLoginCallbacks;
-import com.abhhishek.ally.R;
+import com.layer.ally.R;
 import com.layer.sdk.exceptions.LayerException;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -28,6 +29,8 @@ public class SignupActivity extends ActivityBase implements ParseLoginCallbacks 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_screen);
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Register the signup button
         Button signUpButton = (Button) findViewById(R.id.signup);
@@ -38,7 +41,7 @@ public class SignupActivity extends ActivityBase implements ParseLoginCallbacks 
         mUsername = (EditText) findViewById(R.id.username);
         mPassword = (EditText) findViewById(R.id.password);
         mEmail = (EditText) findViewById(R.id.email);
-        mName = (EditText)findViewById(R.id.name);
+        mName = (EditText) findViewById(R.id.name);
     }
 
     //Starts the registration process once the user taps the signup button
@@ -64,11 +67,10 @@ public class SignupActivity extends ActivityBase implements ParseLoginCallbacks 
 
 
         //Make sure the username is valid
-        if(userName.length() <= 3) {
+        if (userName.length() <= 3) {
             showAlert("Sign Up Error", "A valid name longer than 3 characters is required to sign up.");
             Log.d("Activity", "Cannot create account, name is too short");
-        }
-        else if (usernameString.length() <= 3) {
+        } else if (usernameString.length() <= 3) {
 
             showAlert("Sign Up Error", "A valid username longer than 3 characters is required to sign up.");
             Log.d("Activity", "Cannot create account, username is too short");

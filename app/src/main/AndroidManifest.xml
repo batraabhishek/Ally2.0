@@ -37,9 +37,21 @@
         </activity>
         <activity
             android:name="com.abhishek.ally.Activities.LoginActivity"
+            android:parentActivityName="com.abhishek.ally.Activities.LoginSignUpActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.abhishek.ally.Activities.LoginSignUpActivity"/>>
         </activity>
-        <activity android:name="com.abhishek.ally.Activities.SignupActivity">
+        <activity
+            android:name="com.abhishek.ally.Activities.SignupActivity"
+            android:parentActivityName="com.abhishek.ally.Activities.LoginSignUpActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.abhishek.ally.Activities.LoginSignUpActivity"/>>
         </activity>
         <activity
             android:name="com.abhishek.ally.Activities.ConversationsActivity"
@@ -47,8 +59,13 @@
         </activity>
         <activity
             android:name="com.abhishek.ally.Activities.MessageActivity"
+            android:parentActivityName="com.abhishek.ally.Activities.ConversationsActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.abhishek.ally.Activities.ConversationsActivity"/>>
         </activity>
         <activity
             android:name="com.abhishek.ally.Activities.LoginSignUpActivity"

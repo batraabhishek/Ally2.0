@@ -15,7 +15,7 @@ import android.widget.EditText;
 import com.abhishek.ally.Layer.LayerImpl;
 import com.abhishek.ally.Parse.ParseImpl;
 import com.abhishek.ally.Parse.ParseLoginCallbacks;
-import com.abhhishek.ally.R;
+import com.layer.ally.R;
 import com.layer.sdk.exceptions.LayerException;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -37,7 +37,7 @@ public class LoginActivity extends ActivityBase implements ParseLoginCallbacks {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //Register the login, signup, and forgot password buttons
         Button loginButton = (Button) findViewById(R.id.login);
         if (loginButton != null)

@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.abhhishek.ally.R;
+import com.layer.ally.R;
 
 
 /**

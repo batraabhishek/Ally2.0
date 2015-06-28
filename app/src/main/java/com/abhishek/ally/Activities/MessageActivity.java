@@ -19,18 +19,19 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.abhishek.ally.Adapters.MessageQueryAdapter;
+import com.abhishek.ally.Adapters.QueryAdapter;
+import com.abhishek.ally.Layer.LayerImpl;
+import com.abhishek.ally.Parse.ParseImpl;
+import com.abhishek.ally.VolleySingleton;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.abhishek.ally.Adapters.MessageQueryAdapter;
-import com.abhishek.ally.Adapters.QueryAdapter;
-import com.abhishek.ally.Layer.LayerImpl;
-import com.abhishek.ally.Parse.ParseImpl;
-import com.abhhishek.ally.R;
-import com.abhishek.ally.VolleySingleton;
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.layer.ally.R;
 import com.layer.sdk.messaging.Conversation;
 import com.layer.sdk.messaging.Message;
 import com.layer.sdk.messaging.MessagePart;
@@ -90,8 +91,9 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
         setContentView(R.layout.message_screen);
         hideMenu = false;
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mMessagesView = (RecyclerView) findViewById(R.id.mRecyclerView);
-        Button sendButton = (Button) findViewById(R.id.sendButton);
+        FloatingActionButton sendButton = (FloatingActionButton) findViewById(R.id.sendButton);
         if (sendButton != null)
             sendButton.setOnClickListener(this);
         attachKeyboardListeners(mMessagesView);
@@ -432,13 +434,13 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
             if (percDouble == 0.0) {
                 tv.setText("Neutral: " + emoticons[parInt]);
             } else if (percDouble < 0) {
-                percDouble =  percDouble * (-10);
+                percDouble = percDouble * (-10);
                 int percentage = (int) percDouble;
-                tv.setText("Negative: " + percentage +"%  " + emoticons[parInt]);
+                tv.setText("Negative: " + percentage + "%  " + emoticons[parInt]);
             } else {
-                percDouble =  percDouble * (10);
+                percDouble = percDouble * (10);
                 int percentage = (int) percDouble;
-                tv.setText("Positive: " + percentage +"%  " + emoticons[parInt]);
+                tv.setText("Positive: " + percentage + "%  " + emoticons[parInt]);
             }
         }
     };

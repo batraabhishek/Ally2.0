@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.abhishek.ally.Layer.LayerImpl;
 import com.abhishek.ally.Parse.ParseImpl;
 import com.abhishek.ally.Views.TextViewPlus;
-import com.abhhishek.ally.R;
+import com.layer.ally.R;
 import com.layer.sdk.LayerClient;
 import com.layer.sdk.messaging.Conversation;
 import com.layer.sdk.messaging.Message;

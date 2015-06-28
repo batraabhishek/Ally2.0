@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.abhhishek.ally.R;
+import com.layer.ally.R;
 
 public class LoginSignUpActivity extends AppCompatActivity {
 
@@ -19,11 +19,9 @@ public class LoginSignUpActivity extends AppCompatActivity {
 
     public void login(View v) {
         startActivity(new Intent(this, LoginActivity.class));
-        finish();
     }
 
     public void signup(View v) {
         startActivity(new Intent(this, SignupActivity.class));
-        finish();
     }
 }
