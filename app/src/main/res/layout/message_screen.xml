@@ -15,24 +15,35 @@
         android:layout_height="wrap_content">
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignParentTop="true">
+
+            <com.layer.layerparseexample.Views.TextViewPlus
+                android:id="@+id/emo_icon"
+                style="@style/TextView.CircleIcon.Light"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text=":-|"
+                android:textSize="70sp"/>
+        </LinearLayout>
+
+
         <view
             android:id="@+id/mRecyclerView"
             class="android.support.v7.widget.RecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/linearLayout"/>
-
-
-        <LinearLayout
-            android:id="@+id/bottomDivider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:background="#ff615fff"
-            android:measureWithLargestChild="false"
-            android:minHeight="1dp"
-            android:orientation="vertical"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"/>
+
 
         <LinearLayout
             android:id="@+id/linearLayout"

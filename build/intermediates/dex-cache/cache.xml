@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
-        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-ae84d7d3b2264ccc207fdf43b076370e6dc13e49.jar" />
-    </item>
-    <item
         jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/libs/Parse-1.8.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="56dfc827c23c1f0be64eff2ef556633ea95b16ad">
         <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/Parse-1.8.3-1d2a69e58f1951f340553a18f425fa5ab3d81a4c.jar" />
+    </item>
+    <item
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-ae84d7d3b2264ccc207fdf43b076370e6dc13e49.jar" />
     </item>
     <item
         jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/classes.jar"
@@ -51,6 +51,13 @@
         <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-f38f11eb73fc1b9abeb6098624c7beda461c2377.jar" />
     </item>
     <item
+        jar="/Users/abhishek/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.16/d8f5b9114ebe0f76de7fbf55e950540959ce4ff8/library-1.0.16.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d8f5b9114ebe0f76de7fbf55e950540959ce4ff8">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/library-1.0.16-b5f8f81e73ce8610c2c551dc7a13b5b878f89bae.jar" />
+    </item>
+    <item
         jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -65,18 +72,18 @@
         <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/slf4j-api-1.7.7-1474ed844d115d6b995afebfa7023f9db3cb69c2.jar" />
     </item>
     <item
-        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.layer.sdk/layer-sdk/0.13.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="828c5a448247f9d60db286b7c15cca60700273e3">
-        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-e8d4fe15e123b72fd341916bbe2fe63140880dfc.jar" />
-    </item>
-    <item
         jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.getbase/floatingactionbutton/1.9.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="f2b8a750df2a5d485d0c40b379b44371c5e6d98d">
         <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-9fcf04f2bbeaad281a96e4464b874e0db70eb38c.jar" />
+    </item>
+    <item
+        jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.layer.sdk/layer-sdk/0.13.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="828c5a448247f9d60db286b7c15cca60700273e3">
+        <dex dex="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/pre-dexed/debug/classes-e8d4fe15e123b72fd341916bbe2fe63140880dfc.jar" />
     </item>
     <item
         jar="/Users/abhishek/Cloned/Layer-Parse-Android-Example/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.0/classes.jar"

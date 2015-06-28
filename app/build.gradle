@@ -33,4 +33,5 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.7'
     compile 'com.android.support:recyclerview-v7:+'
     compile 'com.parse.bolts:bolts-android:1.+'
+    compile 'com.mcxiaoke.volley:library:1.0.+'
 }

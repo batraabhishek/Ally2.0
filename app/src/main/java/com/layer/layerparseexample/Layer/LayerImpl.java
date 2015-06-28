@@ -141,7 +141,6 @@ public class LayerImpl {
             List<MessagePart> parts = msg.getMessageParts();
             for (MessagePart part : parts) {
                 try {
-
                     if (part.getMimeType().equals("text/plain"))
                         msgContent += new String(part.getData(), "UTF-8");
 
@@ -171,7 +170,7 @@ public class LayerImpl {
                 dateString = format.format(msg.getReceivedAt());
             } else {
 
-                SimpleDateFormat format = new SimpleDateFormat("M/dd hh:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("M/dd");
                 dateString = format.format(msg.getReceivedAt());
             }
         }

@@ -1,6 +1,7 @@
 package com.layer.layerparseexample.Activities;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,29 +17,70 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.layer.layerparseexample.Adapters.MessageQueryAdapter;
 import com.layer.layerparseexample.Adapters.QueryAdapter;
 import com.layer.layerparseexample.Layer.LayerImpl;
 import com.layer.layerparseexample.Parse.ParseImpl;
 import com.layer.layerparseexample.R;
+import com.layer.layerparseexample.VolleySingleton;
 import com.layer.sdk.messaging.Conversation;
 import com.layer.sdk.messaging.Message;
 import com.layer.sdk.messaging.MessagePart;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 
 public class MessageActivity extends ActivityBase implements MessageQueryAdapter.MessageClickHandler {
 
+
+//    -9 : ~@~
+//            -8 : :{
+//        -7 : >.<
+//        -6 : :=(
+//                -5 : x'(
+//                -4 : x-(
+//                -3 : :-O
+//                -2 : :-(
+//                -1 : :-/
+//                0 : :-|
+//                1 : :-)
+//        2 : :-)
+//        3 : =)
+//        4 : ;-)
+//        5 : B-)
+//        6 : =D
+//        7 : :-D
+//        8 : :))
+//        9 : <3
+
+
+    private static final String[] emoticons = {":x", "~@~", ":{", ">.<",
+            "=(", "x'(", "x-(", ":-O", ":-(", ":-/",
+            ":-|", ":-)", ":-)", "=)", ";-)", "B-)", "=D", ":-D", ";))", "<3", "<3"
+    };
+
+
     private Conversation mConversation;
     private MessageQueryAdapter mMessagesAdapter;
     private RecyclerView mMessagesView;
     private ArrayList<String> mTargetParticipants;
+    private Menu mMenu;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,12 +123,15 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
     private void setupMessagesView() {
 
-        hideAddParticipantsButton();
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mMessagesView.setLayoutManager(layoutManager);
         createMessagesAdapter();
         populateToField(mConversation.getParticipants());
+
+//        hideAddParticipantsButton();
     }
+
 
     private void populateToField(List<String> participantIds) {
 
@@ -119,11 +164,21 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
     private void createMessagesAdapter() {
 
+
         mMessagesAdapter = new MessageQueryAdapter(getApplicationContext(), LayerImpl.getLayerClient(), mMessagesView, mConversation, this, new QueryAdapter.Callback() {
+
+
+            String conCatText = "";
+
 
             public void onItemInserted() {
                 mMessagesView.smoothScrollToPosition(Integer.MAX_VALUE);
+                conCatText += LayerImpl.getMessageText(mConversation.getLastMessage()) + ". ";
+                sendRequest(MessageActivity.this, conCatText);
+
             }
+
+
         });
         mMessagesView.setAdapter(mMessagesAdapter);
         mMessagesAdapter.refresh();
@@ -264,7 +319,7 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
     //When a Conversation has Messages, we disable the ability to Add/Remove participants
     private void hideAddParticipantsButton() {
-//        findViewById(R.id.action_add_part).setVisibility(View.GONE);
+        mMenu.findItem(R.id.action_add_part).setVisible(false);
     }
 
     protected void onShowKeyboard(int keyboardHeight) {
@@ -279,6 +334,7 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.mMenu = menu;
         getMenuInflater().inflate(R.menu.menu_message_screen, menu);
         return true;
     }
@@ -293,4 +349,64 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
         return true;
     }
+
+    public void sendRequest(Context context, final String text) {
+
+        RequestQueue queue = VolleySingleton.getReqQueue(context);
+
+        String url = "http://access.alchemyapi.com/calls/text/TextGetTextSentiment";
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, responseListener, errorListener) {
+
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("apikey", "7579faa3bcd87e301a67e62298fbfeae52f1f899");
+                params.put("outputMode", "json");
+                params.put("text", text);
+                return params;
+            }
+        };
+
+        queue.add(request);
+    }
+
+
+    Response.Listener<String> responseListener = new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+//            Log.d("JSON", response.toString());
+            String perc;
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                perc = jsonObject.getJSONObject("docSentiment").getString("score");
+            } catch (JSONException e) {
+                perc = "0";
+                e.printStackTrace();
+            }
+
+            double percDouble = Double.parseDouble(perc);
+            percDouble = percDouble * 10.0;
+
+            int parInt = (int) percDouble;
+            parInt += 10;
+
+            Log.d("JSON", "Round Off : " + (int) percDouble);
+            ((TextView) findViewById(R.id.emo_icon)).setText(emoticons[parInt]);
+        }
+    };
+
+    Response.ErrorListener errorListener = new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Log.e("JSON", "Error: " + error.getMessage());
+        }
+    };
+
 }

@@ -181,5 +181,7 @@ public class MessageQueryAdapter extends QueryAdapter<Message, MessageQueryAdapt
         public boolean onLongClick(View v) {
             return messageClickHandler.onMessageLongClick(message);
         }
+
+
     }
 }

@@ -53,14 +53,12 @@ public class LaunchActivity extends ActivityBase {
         }
         setContentView(R.layout.splash_screen);
 
-//        }
 
     }
 
 
     @Override
     public void onLayerConnected() {
-
 
 
         if (LayerImpl.isAuthenticated()) {
