@@ -14,13 +14,21 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_light"
+            android:layout_above="@+id/linearLayout"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:gravity="center"
             android:layout_height="match_parent"
             android:layout_above="@+id/linearLayout"
-            android:layout_alignParentTop="true">
+            android:layout_alignParentTop="true"
+            android:gravity="center">
 
             <com.layer.layerparseexample.Views.TextViewPlus
                 android:id="@+id/emo_icon"

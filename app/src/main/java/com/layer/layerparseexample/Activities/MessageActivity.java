@@ -70,9 +70,9 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 //        9 : <3
 
 
-    private static final String[] emoticons = {":x", "~@~", ":{", ">.<",
-            "=(", "x'(", "x-(", ":-O", ":-(", ":-/",
-            ":-|", ":-)", ":-)", "=)", ";-)", "B-)", "=D", ":-D", ";))", "<3", "<3"
+    private static final String[] emoticons = {":x", ":x", ":{", ">.<",
+            ">.<", "=(", "=(", ":-(", ":-(", ":-/",
+            ":-|", ":-)", ":-)", ":-)", ";-)", "B-)", "B-)", ":-D", ":-D", "<3", "<3"
     };
 
 
@@ -81,11 +81,14 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
     private RecyclerView mMessagesView;
     private ArrayList<String> mTargetParticipants;
     private Menu mMenu;
+    private boolean hideMenu;
+    private TextView tv;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.message_screen);
+        hideMenu = false;
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         mMessagesView = (RecyclerView) findViewById(R.id.mRecyclerView);
         Button sendButton = (Button) findViewById(R.id.sendButton);
@@ -128,8 +131,7 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
         mMessagesView.setLayoutManager(layoutManager);
         createMessagesAdapter();
         populateToField(mConversation.getParticipants());
-
-//        hideAddParticipantsButton();
+        hideAddParticipantsButton();
     }
 
 
@@ -173,7 +175,12 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
             public void onItemInserted() {
                 mMessagesView.smoothScrollToPosition(Integer.MAX_VALUE);
+                if (conCatText.length() > 1000) {
+                    conCatText = "";
+                }
+
                 conCatText += LayerImpl.getMessageText(mConversation.getLastMessage()) + ". ";
+
                 sendRequest(MessageActivity.this, conCatText);
 
             }
@@ -208,7 +215,11 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
     private void sendMessage() {
 
         if (mConversation == null) {
-            if (mTargetParticipants.size() > 1) {
+
+            if (mTargetParticipants == null) {
+                showAlert("Send Message Error", "You need to specify at least one participant before sending a message.");
+                return;
+            } else if (mTargetParticipants.size() > 1) {
 
                 mConversation = LayerImpl.getLayerClient().newConversation(mTargetParticipants);
                 createMessagesAdapter();
@@ -268,7 +279,7 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
             String friendId = (String) itr.next();
 
             CheckBox friend = new CheckBox(this);
-            friend.setText(ParseImpl.getUsername(friendId));
+            friend.setText(ParseImpl.getName(friendId) + ": @" + ParseImpl.getUsername(friendId));
 
             //If this user is already selected, mark the checkbox
             if (mTargetParticipants.contains(friendId))
@@ -319,7 +330,11 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
     //When a Conversation has Messages, we disable the ability to Add/Remove participants
     private void hideAddParticipantsButton() {
-        mMenu.findItem(R.id.action_add_part).setVisible(false);
+        try {
+            mMenu.findItem(R.id.action_add_part).setVisible(false);
+        } catch (NullPointerException e) {
+            hideMenu = true;
+        }
     }
 
     protected void onShowKeyboard(int keyboardHeight) {
@@ -334,8 +349,22 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        tv = new TextView(this);
+        tv.setText(":-|");
+        tv.setTextColor(getResources().getColor(R.color.white_secondary_text));
+        tv.setOnClickListener(this);
+        tv.setPadding(5, 0, 5, 0);
+        tv.setTextSize(16);
+        tv.setPadding(20, 0, 20, 0);
+        menu.add(0, 123, 1, "cols").setActionView(tv).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         this.mMenu = menu;
+        if (hideMenu) {
+            return true;
+        }
         getMenuInflater().inflate(R.menu.menu_message_screen, menu);
+
+
         return true;
     }
 
@@ -399,6 +428,18 @@ public class MessageActivity extends ActivityBase implements MessageQueryAdapter
 
             Log.d("JSON", "Round Off : " + (int) percDouble);
             ((TextView) findViewById(R.id.emo_icon)).setText(emoticons[parInt]);
+
+            if (percDouble == 0.0) {
+                tv.setText("Neutral: " + emoticons[parInt]);
+            } else if (percDouble < 0) {
+                percDouble =  percDouble * (-10);
+                int percentage = (int) percDouble;
+                tv.setText("Negative: " + percentage +"%  " + emoticons[parInt]);
+            } else {
+                percDouble =  percDouble * (10);
+                int percentage = (int) percDouble;
+                tv.setText("Positive: " + percentage +"%  " + emoticons[parInt]);
+            }
         }
     };
 
