@@ -1,10 +1,10 @@
-package com.layer.layerparseexample.Activities;
+package com.abhishek.ally.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.layer.layerparseexample.Layer.LayerImpl;
-import com.layer.layerparseexample.Parse.ParseImpl;
+import com.abhishek.ally.Layer.LayerImpl;
+import com.abhishek.ally.Parse.ParseImpl;
 import com.layer.layerparseexample.R;
 
 /*

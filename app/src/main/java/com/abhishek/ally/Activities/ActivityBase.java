@@ -1,23 +1,17 @@
-package com.layer.layerparseexample.Activities;
+package com.abhishek.ally.Activities;
 
 import android.app.AlertDialog;
-import android.content.Context;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Display;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
-import com.layer.layerparseexample.Layer.LayerCallbacks;
-import com.layer.layerparseexample.Layer.LayerImpl;
-import com.layer.layerparseexample.Parse.ParseImpl;
+import com.abhishek.ally.Layer.LayerCallbacks;
+import com.abhishek.ally.Layer.LayerImpl;
+import com.abhishek.ally.Parse.ParseImpl;
 import com.layer.sdk.exceptions.LayerException;
 
 /*

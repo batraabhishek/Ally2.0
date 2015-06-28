@@ -1,4 +1,4 @@
-package com.layer.layerparseexample.Adapters;
+package com.abhishek.ally.Adapters;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.layer.layerparseexample.Layer.LayerImpl;
-import com.layer.layerparseexample.Parse.ParseImpl;
+import com.abhishek.ally.Layer.LayerImpl;
+import com.abhishek.ally.Parse.ParseImpl;
 import com.layer.layerparseexample.R;
 import com.layer.sdk.LayerClient;
 import com.layer.sdk.messaging.Conversation;

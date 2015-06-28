@@ -1,4 +1,4 @@
-package com.layer.layerparseexample.Parse;
+package com.abhishek.ally.Parse;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;

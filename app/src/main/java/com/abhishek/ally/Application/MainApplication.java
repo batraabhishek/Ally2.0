@@ -1,8 +1,8 @@
-package com.layer.layerparseexample.Application;
+package com.abhishek.ally.Application;
 
 import android.app.Application;
 
-import com.layer.layerparseexample.Parse.ParseImpl;
+import com.abhishek.ally.Parse.ParseImpl;
 
 /*
  * MainApplication.java

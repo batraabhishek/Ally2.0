@@ -8,7 +8,7 @@
               tools:context=".MainActivity">
 
 
-    <com.layer.layerparseexample.Views.TextViewPlus
+    <com.abhishek.ally.Views.TextViewPlus
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
@@ -19,7 +19,7 @@
         android:textSize="72sp"
         font:customFont="LDFComicSans.ttf"/>
 
-    <com.layer.layerparseexample.Views.TextViewPlus
+    <com.abhishek.ally.Views.TextViewPlus
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.125"

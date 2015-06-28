@@ -1,4 +1,4 @@
-package com.layer.layerparseexample.Adapters;
+package com.abhishek.ally.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.layer.layerparseexample.Layer.LayerImpl;
-import com.layer.layerparseexample.Parse.ParseImpl;
+import com.abhishek.ally.Layer.LayerImpl;
+import com.abhishek.ally.Parse.ParseImpl;
 import com.layer.layerparseexample.R;
-import com.layer.layerparseexample.Views.TextViewPlus;
+import com.abhishek.ally.Views.TextViewPlus;
 import com.layer.sdk.LayerClient;
 import com.layer.sdk.messaging.Conversation;
 import com.layer.sdk.messaging.Message;

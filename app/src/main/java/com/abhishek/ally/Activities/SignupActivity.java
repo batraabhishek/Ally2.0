@@ -1,4 +1,4 @@
-package com.layer.layerparseexample.Activities;
+package com.abhishek.ally.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.layer.layerparseexample.Layer.LayerImpl;
-import com.layer.layerparseexample.Parse.ParseImpl;
-import com.layer.layerparseexample.Parse.ParseLoginCallbacks;
+import com.abhishek.ally.Layer.LayerImpl;
+import com.abhishek.ally.Parse.ParseImpl;
+import com.abhishek.ally.Parse.ParseLoginCallbacks;
 import com.layer.layerparseexample.R;
 import com.layer.sdk.exceptions.LayerException;
 import com.parse.ParseException;

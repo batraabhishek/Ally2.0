@@ -30,7 +30,7 @@
             android:layout_alignParentTop="true"
             android:gravity="center">
 
-            <com.layer.layerparseexample.Views.TextViewPlus
+            <com.abhishek.ally.Views.TextViewPlus
                 android:id="@+id/emo_icon"
                 style="@style/TextView.CircleIcon.Light"
                 android:layout_width="200dp"

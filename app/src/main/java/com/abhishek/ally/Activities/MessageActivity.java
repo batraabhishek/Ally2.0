@@ -1,4 +1,4 @@
-package com.layer.layerparseexample.Activities;
+package com.abhishek.ally.Activities;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -25,12 +25,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.layer.layerparseexample.Adapters.MessageQueryAdapter;
-import com.layer.layerparseexample.Adapters.QueryAdapter;
-import com.layer.layerparseexample.Layer.LayerImpl;
-import com.layer.layerparseexample.Parse.ParseImpl;
+import com.abhishek.ally.Adapters.MessageQueryAdapter;
+import com.abhishek.ally.Adapters.QueryAdapter;
+import com.abhishek.ally.Layer.LayerImpl;
+import com.abhishek.ally.Parse.ParseImpl;
 import com.layer.layerparseexample.R;
-import com.layer.layerparseexample.VolleySingleton;
+import com.abhishek.ally.VolleySingleton;
 import com.layer.sdk.messaging.Conversation;
 import com.layer.sdk.messaging.Message;
 import com.layer.sdk.messaging.MessagePart;

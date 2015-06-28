@@ -1,4 +1,4 @@
-package com.layer.layerparseexample.Activities;
+package com.abhishek.ally.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;

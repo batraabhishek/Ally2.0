@@ -1,4 +1,4 @@
-package com.layer.layerparseexample.Activities;
+package com.abhishek.ally.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.layer.layerparseexample.Adapters.ConversationQueryAdapter;
-import com.layer.layerparseexample.Adapters.QueryAdapter;
-import com.layer.layerparseexample.Layer.LayerImpl;
-import com.layer.layerparseexample.Parse.ParseImpl;
+import com.abhishek.ally.Adapters.ConversationQueryAdapter;
+import com.abhishek.ally.Adapters.QueryAdapter;
+import com.abhishek.ally.Layer.LayerImpl;
+import com.abhishek.ally.Parse.ParseImpl;
 import com.layer.layerparseexample.R;
 import com.layer.sdk.messaging.Conversation;
 import com.parse.ParseUser;

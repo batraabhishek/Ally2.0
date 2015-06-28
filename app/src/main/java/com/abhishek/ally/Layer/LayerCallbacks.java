@@ -1,4 +1,4 @@
-package com.layer.layerparseexample.Layer;
+package com.abhishek.ally.Layer;
 
 import com.layer.sdk.exceptions.LayerException;
 

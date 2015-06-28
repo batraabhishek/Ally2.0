@@ -10,7 +10,7 @@
         android:layout_gravity="center_vertical"
         android:orientation="horizontal">
 
-        <com.layer.layerparseexample.Views.TextViewPlus
+        <com.abhishek.ally.Views.TextViewPlus
             android:id="@+id/text_icon"
             style="@style/TextView.CircleIcon"
             android:layout_gravity="center_vertical"
@@ -27,7 +27,7 @@
             <view
                 android:id="@+id/participants"
                 style="@style/TextView.Title.Thin"
-                class="com.layer.layerparseexample.Views.TextViewPlus"
+                class="com.abhishek.ally.Views.TextViewPlus"
                 android:layout_marginLeft="16dp"
                 android:paddingBottom="8dp"
                 android:paddingTop="16dp"
@@ -36,7 +36,7 @@
             <view
                 android:id="@+id/message"
                 style="@style/TextView.Body1"
-                class="com.layer.layerparseexample.Views.TextViewPlus"
+                class="com.abhishek.ally.Views.TextViewPlus"
                 android:layout_marginLeft="16dp"
                 android:paddingBottom="8dp"
                 android:paddingRight="16dp"
@@ -44,7 +44,7 @@
         </LinearLayout>
 
 
-        <com.layer.layerparseexample.Views.TextViewPlus
+        <com.abhishek.ally.Views.TextViewPlus
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

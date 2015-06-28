@@ -1,4 +1,4 @@
-package com.layer.layerparseexample.Adapters;
+package com.abhishek.ally.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
