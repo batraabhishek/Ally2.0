@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.abhishek.ally.Layer.LayerImpl;
 import com.abhishek.ally.Parse.ParseImpl;
@@ -96,6 +97,7 @@ public class LoginActivity extends ActivityBase implements ParseLoginCallbacks {
         } else {
 
             //Log the user in using Parse
+            Toast.makeText(this, "Logging in", Toast.LENGTH_SHORT).show();
             Log.d("Activity", "Starting login process");
             ParseImpl.loginUser(usernameString, passwordString, this);
         }

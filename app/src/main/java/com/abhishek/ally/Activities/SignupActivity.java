@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.abhishek.ally.Layer.LayerImpl;
 import com.abhishek.ally.Parse.ParseImpl;
@@ -91,6 +92,7 @@ public class SignupActivity extends ActivityBase implements ParseLoginCallbacks 
         } else {
 
             Log.d("Activity", "Staring registration process for " + usernameString);
+            Toast.makeText(this, "Creating account", Toast.LENGTH_SHORT).show();
             ParseImpl.registerUser(usernameString, passwordString, emailString, userName, this);
 
         }
